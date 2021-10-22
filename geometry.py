@@ -4,4 +4,4 @@ from annotation import label
 def plotLine(plt, start, end, txt= None):
   plt.annotate(s='', xy=end, xytext=start, arrowprops=dict(arrowstyle='<->'))
   if txt:
-    label(txt, end)
+    label(plt, txt, end)
