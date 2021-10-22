@@ -1,4 +1,4 @@
-def label(plt,text, coords):
+def label(plt,text,coords):
   plt.annotate(text, # this is the text
                  coords, # these are the coordinates to position the label
                  textcoords="offset points", # how to position the text
