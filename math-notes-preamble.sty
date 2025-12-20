@@ -1,16 +1,13 @@
 % math-notes-preamble.sty - Shared preamble for converted Jupyter notebooks
 % Usage: \usepackage{math-notes-preamble}
+% Minimal dependencies - works with BasicTeX
 
 \ProvidesPackage{math-notes-preamble}
 
-% Basic packages
+% Core packages (included in BasicTeX)
 \usepackage{parskip}
 \usepackage{graphicx}
 \setkeys{Gin}{keepaspectratio}
-\usepackage{caption}
-\DeclareCaptionFormat{nocaption}{}
-\captionsetup{format=nocaption,aboveskip=0pt,belowskip=0pt}
-
 \usepackage{float}
 \floatplacement{figure}{H}
 \usepackage{xcolor}
@@ -18,27 +15,13 @@
 \usepackage{geometry}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{textcomp}
-\usepackage{upquote}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{array}
 
-% Modern LaTeX (2018+) has native UTF-8 support
+% Font encoding
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-
-\usepackage{fancyvrb}
-\usepackage[Export]{adjustbox}
-\adjustboxset{max size={0.9\linewidth}{0.9\paperheight}}
-
-\usepackage{hyperref}
-\usepackage{titling}
-\usepackage{longtable}
-\usepackage{booktabs}
-\usepackage{array}
-\usepackage{calc}
-\usepackage[inline]{enumitem}
-\usepackage[normalem]{ulem}
-\usepackage{soul}
-\usepackage{mathrsfs}
 
 % Colors for hyperref
 \definecolor{urlcolor}{rgb}{0,.145,.698}
@@ -49,22 +32,17 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-\makeatletter
-\newsavebox\pandoc@box
+% Simple image scaling (replaces adjustbox dependency)
 \newcommand*\pandocbounded[1]{%
-  \sbox\pandoc@box{#1}%
-  \Gscale@div\@tempa\textheight{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
-  \Gscale@div\@tempb\linewidth{\wd\pandoc@box}%
-  \ifdim\@tempb\p@<\@tempa\p@
-    \let\@tempa\@tempb
-  \fi
-  \ifdim\@tempa\p@<\p@
-    \scalebox{\@tempa}{\usebox\pandoc@box}%
+  \begingroup
+  \setbox0=\hbox{#1}%
+  \ifdim\wd0>\linewidth
+    \resizebox{\linewidth}{!}{#1}%
   \else
-    \usebox{\pandoc@box}%
+    #1%
   \fi
+  \endgroup
 }
-\makeatother
 
 % Math Jax compatibility
 \def\gt{>}
@@ -81,4 +59,3 @@
 
 % Margins
 \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
-
