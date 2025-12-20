@@ -21,19 +21,9 @@
 \usepackage{textcomp}
 \usepackage{upquote}
 
-\usepackage{iftex}
-\ifPDFTeX
-    \usepackage[T1]{fontenc}
-    \IfFileExists{alphabeta.sty}{
-          \usepackage{alphabeta}
-      }{
-          \usepackage[mathletters]{ucs}
-          \usepackage[utf8x]{inputenc}
-      }
-\else
-    \usepackage{fontspec}
-    \usepackage{unicode-math}
-\fi
+% Modern LaTeX (2018+) has native UTF-8 support
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 
 \usepackage{fancyvrb}
 \usepackage[Export]{adjustbox}
