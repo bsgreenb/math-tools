@@ -1,0 +1,763 @@
+\documentclass[11pt]{article}
+\usepackage{math-notes-preamble}
+
+\title{SeriesSequences}
+
+\begin{document}
+\maketitle
+
+\section{Sources}\label{sources}
+
+\begin{itemize}
+\tightlist
+\item
+  Started with Khan
+  \href{https://www.khanacademy.org/math/precalculus/x9e81a4f98389efdf:series}{Precalc
+  on Series}
+\item
+  Then did
+  \href{https://www.khanacademy.org/math/ap-calculus-bc/bc-series-new}{AP
+  Calc - Series on Khan}
+\item
+  To really get these notes well-organized and proper, went through
+  Paul's Math Notes. Didn't end up much using Khan for notes, similar to
+  my Integral notes went with PAul.
+\end{itemize}
+
+Much of this is copied verbatim from
+\href{https://tutorial.math.lamar.edu/Classes/CalcII/SeriesIntro.aspx}{Paul's
+Math Notes}.
+
+\section{Sequences}\label{sequences}
+
+There are a variety of ways of denoting a sequence. Each of the
+following are equivalent ways of denoting a sequence.
+
+\[
+\left\{a_{1}, a_{2}, \ldots, a_{n}, a_{n+1}, \ldots\right\} \quad\left\{a_{n}\right\} \quad\left\{a_{n}\right\}_{n=1}^{\infty}
+\]
+
+Alternating but approaching 0 from both sides is same as approaching 0:
+
+\[\text { If } \lim_{n \rightarrow \infty}\left|a_{n}\right|=0 \text { then } \lim _{n \rightarrow \infty} a_{n}=0\]
+
+``Odd Even Theorem'' (my own coinage) for Sequences.. For the sequence
+\(\left\{a_{n}\right\}\) if both
+\(\lim\limits_{n \rightarrow \infty} a_{2 n}=L\) and
+\(\lim\limits_{n \rightarrow \infty} a_{2 n+1}=L\) then
+\(\left\{a_{n}\right\}\) is convergent and
+\(\lim\limits{n \rightarrow \infty} a_{n}=L\). This is proven
+\href{https://tutorial.math.lamar.edu/Classes/CalcII/Sequences.aspx}{at
+the bottom on Lamar here}.
+
+\subsection{Sequence Properties}\label{sequence-properties}
+
+Given a sequence \(\left\{a_{n}\right\}\): 1. We call the sequence
+\textbf{increasing} if \(a_{n}<a_{n+1}\) for every \(n\). 2. We call the
+sequence \textbf{decreasing} if \(a_{n}>a_{n+1}\) for every \(n\). 3. If
+\(\left\{a_{n}\right\}\) is an increasing sequence or
+\(\left\{a_{n}\right\}\) is a decreasing sequence we call it
+\textbf{monotonic}. 4. If there exists a number \(m\) such that
+\(m \leq a_{n}\) for every \(n\) we say the sequence is \textbf{bounded
+below}. The number \(m\) is sometimes called a \textbf{lower bound} for
+the sequence. 5. If there exists a number \(M\) such that
+\(a_{n} \leq M\) for every \(n\) we say the sequence is \textbf{bounded
+above}. The number \(M\) is sometimes called an \textbf{upper bound} for
+the sequence. 6. If the sequence is both bounded below and bounded above
+we call the sequence \textbf{bounded}.
+
+Take the derivative to check for monotonicity. Look at critical points
+to identify possible sign changes. If it's always positive or always
+negative, you're always increasing or decreasing, respectively.
+
+\subsection{Sequence convergence}\label{sequence-convergence}
+
+If \(\left\{a_{n}\right\}\) is bounded and monotonic then
+\(\left\{a_{n}\right\}\) is convergent.
+
+The sequence \(\left\{r^{n}\right\}_{n=0}^{\infty}\) converges if
+\(-1<r \leq 1\) and diverges for all other values of \(r\). Also, \[
+\lim _{n \rightarrow \infty} r^{n}=\begin{cases}0 & \text { if }-1<r<1 \\ 1 & \text { if } r=1\end{cases}
+\]
+
+\subsection{Squeeze theorem for
+sequences}\label{squeeze-theorem-for-sequences}
+
+\[\text { If } a_{n} \leq c_{n} \leq b_{n} \text { for all } n>N \text { for some } N \text { and } \lim _{n \rightarrow \infty} a_{n}=\lim _{n \rightarrow \infty} b_{n}=L \text { then } \lim _{n \rightarrow \infty} c_{n}=L \text {. }\]
+
+    \section{Series / Partial Sums}\label{series-partial-sums}
+
+A \textbf{series} is the sum of a sequence. A \textbf{partial sum}
+\(S_n\) is the sum of the first \(n\) terms of a series. The nth term of
+a partial sum: \[a_n = S_n - S_{n-1}\]
+
+Basic rules on adding/subtracting series, and multiplication:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\sum\limits_{i=i_{0}}^{n} c a_{i}=c \sum\limits_{i=i_{0}}^{n} a_{i}\)
+  where \(c\) is any number. So, we can factor constants out of a
+  summation.
+\item
+  \(\sum\limits_{i=i_{0}}^{n}\left(a_{i} \pm b_{i}\right)=\sum\limits_{i=i_{0}}^{n} a_{i} \pm \sum\limits_{i=i_{0}}^{n} b_{i}\)
+  So, we can break up a summation across a sum or difference.
+\end{enumerate}
+
+Some series formulas for partial sums. Note that these only work when
+\(i\) starts at \(1\), and that it's generally rare/hard to find such
+clean partial sum formulas. \[
+\begin{aligned}
+&\sum_{i=1}^{n} c=c n \\
+&\sum_{i=1}^{n} i=\frac{n(n+1)}{2} \\
+&\sum_{i=1}^{n} i^{2}=\frac{n(n+1)(2 n+1)}{6} \\
+&\sum_{i=1}^{n} i^{3}=\left[\frac{n(n+1)}{2}\right]^{2}
+\end{aligned}
+\]
+
+\section{Infinite Series}\label{infinite-series}
+
+\[
+\sum_{i=1}^{\infty} a_{i}=\lim _{n \rightarrow \infty} S_{n}
+\]
+
+\section{Convergence/Divergence of Infinite
+Series}\label{convergencedivergence-of-infinite-series}
+
+If the sequence of partial sums,
+\(\left\{s_{n}\right\}_{n=1}^{\infty}\), is convergent and its limit is
+finite then we also call the infinite series,
+\(\sum_{i=1}^{\infty} a_{i}\) \textbf{convergent} and if the sequence of
+partial sums is divergent then the infinite series is
+\textbf{divergent}.
+
+Multiplying a series by a constant will not change the
+convergence/divergence of the series and adding or subtracting a
+constant from a series will not change the convergence/divergence of the
+series.
+
+\subsection{Divergence Test}\label{divergence-test}
+
+If \(\sum a_{n}\) converges then
+\(\lim\limits_{n \rightarrow \infty} a_{n}=0\).
+
+Be careful to not misuse this theorem! This theorem gives us a
+requirement for convergence but not a guarantee of convergence. In other
+words, the converse is NOT true. So for example the harmonic series
+diverges.
+
+The proof of the above was given on Khan and proly more clearly
+accessible
+\href{https://tutorial.math.lamar.edu/Classes/CalcII/ConvergenceOfSeries.aspx\#}{on
+Lamar} {[}I wonder what's the general name for this technique of
+flipping the expanded series around and adding/subtracting from itself
+you see here?{]}
+
+Note on notation: when indexes aren't specified, assume it goes to
+infinity, and that it doesn't matter where it starts.
+
+\subsection{Absolute vs Conditional
+Convergence}\label{absolute-vs-conditional-convergence}
+
+A series \(\sum a_{n}\) is said to \textbf{converge absolutely} if
+\(\sum\left|a_{n}\right|\) also converges. Absolute convergence is
+\emph{stronger} than convergence in the sense that a series that is
+absolutely convergent will also be convergent, but a series that is
+convergent may or may not be absolutely convergent.
+
+If \(\sum a_{n}\) converges and \(\sum\left|a_{n}\right|\) diverges the
+series \(\sum a_{n}\) is called \textbf{conditionally convergent}.
+
+Given the series \(\sum a_{n}\) 1. If \(\sum a_{n}\) is absolutely
+convergent and its value is \(s\) then any rearrangement of
+\(\sum a_{n}\) will also have a value of \(s\). 2. If \(\sum a_{n}\) is
+conditionally convergent and \(r\) is any real number then there is a
+rearrangement of \(\sum a_{n}\) whose value will be \(r\).
+
+\[
+\text { If } \sum a_{n} \text { is absolutely convergent then it is also convergent. }
+\]
+
+\href{https://tutorial.math.lamar.edu/Classes/CalcII/AbsoluteConvergence.aspx\#:~:text=is\%20also\%20convergent.-,Proof,First,-notice\%20that\%20\%7Can\%7C\%7Can\%7C}{Proof
+for \^{}that}.
+
+So a key takeaways: - If a series is not absolutely convergent, don't
+treat it like a number. - If it seems simpler to check for absolute
+convergence on an alternating sequence, give that a go first, since it
+must be convergent if absolutely convergent.
+
+\section{Special Series}\label{special-series}
+
+In general, determining the value of a series is very difficult outside
+of the ones provided here. Generally in Calc 2 you don't try and find
+values for series so much as examine convergence.
+
+\subsection{Geometric Series}\label{geometric-series}
+
+\[
+\sum_{n=0}^{\infty} a r^{n}
+\]
+
+A \textbf{geometric series} will converge if \(-1<r<1\), which is
+usually written \(|r|<1\), its value is, \[
+\sum_{n=0}^{\infty} a r^{n}=\frac{a}{1-r}
+\]
+
+We can prove the above pretty easily by taking limits and seeing the
+conditions at which it would diverge or converge based on sequence
+convergence theorem above. Check out Khan or
+\href{https://tutorial.math.lamar.edu/Classes/CalcII/Series_Special.aspx}{Lamar}
+for how they step through it.
+
+\subsection{Arithmetic Series}\label{arithmetic-series}
+
+Via \href{https://en.wikipedia.org/wiki/Arithmetic_progression}{Wiki}:
+
+An \textbf{arithmetic progression} or \textbf{arithmetic sequence} is a
+sequence of numbers such that the difference between the consecutive
+terms is constant. For instance, the sequence \(5,7,9,11,13,15, \ldots\)
+is an arithmetic progression with a \textbf{common difference} of \(2\).
+The sum of an \textbf{arithmetic progression} is called an
+\textbf{arithmetic series}.
+
+The sum of an arithmetic series is provided by:
+
+\[
+\frac{n\left(a_{1}+a_{n}\right)}{2}
+\]
+
+\subsection{Harmonic Series}\label{harmonic-series}
+
+\[
+\sum_{n=1}^{\infty} \frac{1}{n}
+\]
+
+\subsection{Telescoping Series}\label{telescoping-series}
+
+A telescoping series does not have a set form, like the geometric and
+p-series do. A telescoping series is any series where nearly every term
+cancels with a preceeding or following term. --
+\href{http://sites.science.oregonstate.edu/math/home/programs/undergrad/CalculusQuestStudyGuides/SandS/SeriesTests/telescoping.html}{Oregon
+State}
+
+It's often helpful to use partial fractions to simplify series into
+these. Several examples of this on
+\href{https://tutorial.math.lamar.edu/Classes/CalcII/Series_Special.aspx}{Lamar}
+section on Telecscoping Series. Note that just because partial fractions
+simplify the series, doesn't mean it's telescoping.. to telescope there
+needs to be some cancelling of pairs of terms.
+
+Note that it's not always obvious if a series is telescoping or not
+until you try to get the partial sums and then see if they are in fact
+telescoping. There is no test that will tell us that we've got a
+telescoping series right off the bat.
+
+\section{Strategy for Series}\label{strategy-for-series}
+
+Note that these are a general set of guidelines and because some series
+can have more than one test applied to them we will get a different
+result depending on the path that we take through this set of
+guidelines. Use your intuition, and for harder series consider multiple
+options before proceeding.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  With a quick glance does it look like the series terms don't converge
+  to zero in the limit, i.e.~does
+  \(\lim _{n \rightarrow \infty} a_{n} \neq 0\) ? If so, use the
+  Divergence Test. Note that you should only do the Divergence Test if a
+  quick glance suggests that the series terms may not converge to zero
+  in the limit.
+\item
+  Is the series a \(p\)-series \(\left(\sum \frac{1}{n^{p}}\right)\) or
+  a geometric series \(\left(\sum_{n=0}^{\infty} a r^{n}\right.\) or
+  \(\left.\sum_{n=1}^{\infty} a r^{n-1}\right)\) ? If so use the fact
+  that \(p\)-series will only converge if \(p>1\) and a geometric series
+  will only converge if \(|r|<1\). Remember as well that often some
+  algebraic manipulation is required to get a geometric series into the
+  correct form.
+\item
+  Is the series similar to a \(p\)-series or a geometric series? If so,
+  try the Comparison Test.
+\item
+  Is the series a rational expression involving only polynomials or
+  polynomials under radicals (i.e.~a fraction involving only polynomials
+  or polynomials under radicals)? If so, try the Comparison Test and/or
+  the Limit Comparison Test. Remember however, that in order to use the
+  Comparison Test and the Limit Comparison Test the series terms all
+  need to be positive.
+\item
+  Does the series contain factorials or constants raised to powers
+  involving \(n\) ? If so, then the Ratio Test may work. Note that if
+  the series term contains a factorial then the only test that we've got
+  that will work is the Ratio Test.
+\item
+  Can the series terms be written in the form \(a_{n}=(-1)^{n} b_{n}\)
+  or \(a_{n}=(-1)^{n+1} b_{n}\) ? If so, then the Alternating Series
+  Test may work.
+\item
+  Can the series terms be written in the form
+  \(a_{n}=\left(b_{n}\right)^{n}\) ? If so, then the Root Test may work.
+\item
+  If \(a_{n}=f(n)\) for some positive, decreasing function and
+  \(\int_{a}^{\infty} f(x) d x\) is easy to evaluate then the Integral
+  Test may work.
+\end{enumerate}
+
+\section{Convergence Tests}\label{convergence-tests}
+
+\subsection{Integral Test}\label{integral-test}
+
+Suppose that \(f(x)\) is a continuous, positive and decreasing function
+on the interval \([k, \infty)\) and that \(f(n)=a_{n}\) then, 1. If
+\(\int_{k}^{\infty}f(x)~d x\) is convergent so is
+\(\sum\limits_{n=k}^{\infty} a_{n}\) 2. If \(\int_{k}^{\infty}f(x)~d x\)
+is divergent so is \(\sum\limits_{n=k}^{\infty} a_{n}\)
+
+We can use this one to prove the harmonic series doesn't converge,
+because it's decreasing, and its integral diverges.
+
+The function does not actually need to be decreasing and positive
+everywhere in the interval. All that's really required is that
+eventually the function is decreasing and positive. In other words, it
+is okay if the function (and hence series terms) increases or is
+negative for a while, but eventually the function (series terms) must
+decrease and be positive for all terms.
+
+\href{https://tutorial.math.lamar.edu/Classes/CalcII/IntegralTest.aspx\#:~:text=proof\%20of\%20integral\%20test}{Proof
+of the Integral Test} which proves from the conditions of being
+positive, bounded and monotonic. It's divided into two parts
+corresponding to the Integral Test statement above, and using right
+(overestimate) and left (underestimate) riemann sums, respectively.
+
+My intuition was correct that the Integral Test
+\href{https://math.stackexchange.com/a/3198302/49487}{works} for
+negative and increasing, but this is also obvious from just reflecting
+over the x axis and applying the initial rule.
+
+Remember that the test only determines the convergence of a series and
+does NOT give the value of the series.
+
+\subsection{P-Series Test}\label{p-series-test}
+
+\[
+\text { If } k>0 \text { then } \sum_{n=k}^{\infty} \frac{1}{n^{p}} \text { converges if } p > 1 \text { and diverges if } p \leq 1
+\]
+
+We know this works via the Integral test.
+
+    \subsection{Comparison Test}\label{comparison-test}
+
+Suppose that we have two series \(\sum a_{n}\) and \(\sum b_{n}\) with
+\(a_{n}, b_{n} \geq 0\) for all \(n\) and \(a_{n} \leq b_{n}\) for all
+\(n\). Then, 1. If \(\sum b_{n}\) is convergent then so is
+\(\sum a_{n}\). 2. If \(\sum a_{n}\) is divergent then so is
+\(\sum b_{n}\).
+
+This is analagous to the Comparison Test for Improper Integrals (see
+Integral Calculus notebook).
+
+Note that the requirement that \(a_{n}, b_{n} \geq 0\) and
+\(a_{n} \leq b_{n}\) really only need to be true \emph{eventually}.
+
+\href{https://tutorial.math.lamar.edu/Classes/CalcII/SeriesCompTest.aspx\#:~:text=proof\%20of\%20comparison\%20test}{Lamar
+Proof here}.
+
+\subsection{Limit Comparison Test}\label{limit-comparison-test}
+
+Suppose that we have two series \(\sum a_{n}\) and \(\sum b_{n}\) with
+\(a_{n} \geq 0, b_{n}>0\) for all \(n\). Define, \[
+c=\lim _{n \rightarrow \infty} \frac{a_{n}}{b_{n}}
+\] If \(c\) is positive (i.e.~\(c>0\) ) and is finite (i.e.~\(c<\infty\)
+) then either both series converge or both series diverge.
+
+Note that you can plug in \(a_n\) and \(b_n\) in any order of
+numerator/denominator. Also, note that the converse does apply -- if you
+fail to get a positive limit ratio, that doesn't mean they necessarily
+have the same convergence/divergence.
+
+Limits like this often solve quickly with L'Hopital's Rule.
+
+\href{https://tutorial.math.lamar.edu/Classes/CalcII/SeriesCompTest.aspx\#Series_CompTest_LCTProof}{Proof},
+which mostly is just the application of the previously proven Comparison
+Test.
+
+\subsection{Alternating Series Test}\label{alternating-series-test}
+
+Suppose that we have a series \(\sum a_{n}\) and either
+\(a_{n}=(-1)^{n} b_{n}\) or \(a_{n}=(-1)^{n+1} b_{n}\) where
+\(b_{n} \geq 0\) for all \(n\). Then if, 1.
+\(\lim\limits_{n \rightarrow \infty} b_{n}=0\) and, 2.
+\(\left\{b_{n}\right\}\) is a decreasing sequence
+
+the series \(\sum a_{n}\) is convergent.
+
+For the ``decreasing'' condition, as elsewhere, taking derivative at
+checking critical points can tell you at what point a function becomes
+decreasing/increasing if ever.
+
+As with previous convergence tests, the converse (divergence testing)
+doesn't apply, and the rules are about what \emph{eventually} happens at
+infinite N, not necessarily what happens finitely prior.
+
+\href{https://tutorial.math.lamar.edu/Classes/CalcII/AlternatingSeries.aspx\#Series_AltSeries_Proof}{Proof
+here}. Essentially what it shows is that an alternating series with the
+right prerequisites, is basically composed of two convergent series (the
+odd and even n's) added together. Most of the work is on showing the
+former is convergent - they find it's increase and bounded (via
+cancelling of terms with neighbors), and from there the other part of
+the series is shown to be convergent based on sequence limit theorem.
+
+\subsection{Ratio Test}\label{ratio-test}
+
+Suppose we have the series \(\sum a_{n}\). Define, \[
+L=\lim _{n \rightarrow \infty}\left|\frac{a_{n+1}}{a_{n}}\right|
+\] Then, 1. if \(L<1\) the series is absolutely convergent (and hence
+convergent). 2. if \(L>1\) the series is divergent. 3. if \(L=1\) the
+series may be divergent, conditionally convergent, or absolutely
+convergent.
+
+The absolute value bars in the definition of L are absolutely required,
+don't forget em.
+
+\href{https://tutorial.math.lamar.edu/Classes/CalcII/RatioTest.aspx\#Series_Ratio_Proof}{Proof}.
+Part 1 is proven by showing that its less than a geometric series when
+\(L<1\), so it converges. Part 2 we show it fails the Divergence Test
+when \(L > 1\). For part 3, all that's required is counter examples of
+each type, which are easy to come by.
+
+\subsection{Root Test}\label{root-test}
+
+Suppose that we have the series \(\sum a_{n}\). Define, \[
+L=\lim _{n \rightarrow \infty} \sqrt[n]{\left|a_{n}\right|}=\lim _{n \rightarrow \infty}\left|a_{n}\right|^{\frac{1}{n}}
+\] Then, 1. if \(L<1\) the series is absolutely convergent (and hence
+convergent). 2. if \(L>1\) the series is divergent. 3. if \(L=1\) the
+series may be divergent, conditionally convergent, or absolutely
+convergent.
+
+Useful limit which is is utilized on some problems involving the Root
+Test
+
+\[
+\lim _{n \rightarrow \infty} n^{\frac{1}{n}}=1
+\]
+
+\href{https://tutorial.math.lamar.edu/Classes/CalcII/RootTest.aspx\#Series_Root_Proof}{Proof}.
+Very similar to the previous one, so I just skimmed through it.
+
+    \section{Estimating Series / Error
+Bounds}\label{estimating-series-error-bounds}
+
+Formula for remainder denoted by \(R_n\) from infinite series \(S\) and
+partial sum \(S_n\).
+
+\[
+s=s_{n}+R_{n}
+\]
+
+\[
+R_{n}=\sum_{i=n+1}^{\infty} a_{i}=a_{n+1}+a_{n+2}+a_{n+3}+a_{n+4}+\cdots
+\]
+
+\subsection{Using Integral Test}\label{using-integral-test}
+
+\[
+\int_{n+1}^{\infty} f(x) d x \leq R_{n} \leq \int_{n}^{\infty} f(x) d x
+\]
+
+\[
+s_{n}+\int_{n+1}^{\infty} f(x) d x \leq s \leq s_{n}+\int_{n}^{\infty} f(x) d x
+\]
+
+\subsection{Using Comparison Test Plus
+Integral}\label{using-comparison-test-plus-integral}
+
+First, let's remind ourselves on how the comparison test actually works.
+Given a series \(\sum a_{n}\) let's assume that we've used the
+comparison test to show that it's convergent. Therefore, we found a
+second series \(\sum b_{n}\) that converged and \(a_{n} \leq b_{n}\) for
+all \(n\). Also recall that we need both \(a_{n}\) and \(b_{n}\) to be
+positive for all \(n\).
+
+What we want to do is determine how good of a job the partial sum,
+
+\[
+s_{n}=\sum_{i=1}^{n} a_{i}
+\]
+
+will do in estimating the actual value of the series \(\sum a_{n}\).
+Again, we will use the remainder to do this. Let's actually write down
+the remainder for both series.
+
+\[
+R_{n}=\sum_{i=n+1}^{\infty} a_{i} \quad T_{n}=\sum_{i=n+1}^{\infty} b_{i}
+\]
+
+Now, since \(a_{n} \leq b_{n}\) we also know that \[
+R_{n} \leq T_{n}
+\]
+
+Combining with the integral test we have
+
+\[
+R_{n} \leq T_{n} \leq \int_{n}^{\infty} g(x) ~dx \quad \text { where } g(n)=b_{n}
+\]
+
+\subsection{Alternating Series Test}\label{alternating-series-test}
+
+Once again we will start off with a convergent series
+\[\sum a_{n}=\sum(-1)^{n} b_{n}\] which in this case happens to be an
+alternating series that satisfies the conditions of the alternating
+series test, so we know that \(b_{n} \geq 0\) and is decreasing for all
+\(n\). We want to know how good of an estimation of the actual series
+value will the partial sum, \(s_{n}\), be.
+
+\[
+\left|R_{n}\right|=\left|s-s_{n}\right| \leq b_{n+1}
+\]
+
+\subsection{Using Ratio Test}\label{using-ratio-test}
+
+I found this pretty tricky to understand. Khan didn't cover it, maybe
+videos are important part of learning heh. Statement of it:
+
+To get an estimate of the remainder let's first define the following
+sequence, \[
+r_{n}=\frac{a_{n+1}}{a_{n}}
+\] We now have two possible cases. 1. If \(\left\{r_{n}\right\}\) is a
+decreasing sequence and \(r_{n+1}<1\) then, \[
+R_{n} \leq \frac{a_{n+1}}{1-r_{n+1}}
+\] 2. If \(\left\{r_{n}\right\}\) is an increasing sequence then, \[
+R_{n} \leq \frac{a_{n+1}}{1-L}
+\]
+
+\href{https://tutorial.math.lamar.edu/Classes/CalcII/EstimatingSeries.aspx\#:~:text=we\%E2\%80\%99ll\%20start\%20with\%20the\%20remainder}{Proof
+here}. I had a bit of trouble actually following along with this.\\
+\# Power Series A power series about a, or just power series, is any
+series that can be written in the form,
+
+\[
+\sum_{n=0}^{\infty} c_{n}(x-a)^{n}
+\]
+
+The first thing to notice about a power series is that it is a function
+of x. That is different from any other kind of series that we've looked
+at to this point. Now we're dealing with the situation where a power
+series may converge for some values of \(x\) and not for other values of
+\(x\).
+
+First, as we will see in our examples, we will be able to show that
+there is a number \(R\) so that the power series will converge for,
+\(|x-a|<R\) and will diverge for \(|x-a|>R\). This number is called the
+\textbf{radius of convergence} for the series. Note that the series may
+or may not converge if \(|x-a|=R\). What happens at these points will
+not change the radius of convergence.
+
+Secondly, the interval of all \(x\)'s, including the endpoints if need
+be, for which the power series converges is called the \textbf{interval
+of convergence} of the series.
+
+Finding the convergence of a power series will often just be a question
+of applying the Ratio Test, and then additionally checking convergence
+at the endpoints.
+
+When the interval of convergence is just a point, you just state it as
+such, not as a range, and you say the radius of convergence is 0. If the
+series converges for every x, then we say the radius is \(\infty\), and
+the interval is \((-\infty, \infty)\).
+
+\subsection{Power Series and
+Functions}\label{power-series-and-functions}
+
+Let's talk about how to represent functions with power series.
+
+\[
+\frac{1}{1-x} = \sum_{n=0}^{\infty} x^{n} \quad \text { provided }|x|<1
+\]
+
+This idea of convergence (like \(|x|<1\) above) is important here. We
+will be representing many functions as power series and it will be
+important to recognize that the representations will often only be valid
+for a range of \(x\)'s and that there may be values of \(x\) that we can
+plug into the function that we can't plug into the power series
+representation.
+
+Once you know a power series representation of a function, you can
+proceed to plug things into it. It's way more flexible than the integral
+sign; just ensure you're convergent. Composition is possible, etc.
+
+\subsubsection{Differentiation and Integration of Power
+Series}\label{differentiation-and-integration-of-power-series}
+
+Differentiation and Integration rules for Power Series will allow us to
+use differentiation/integration of functions to compose power series..
+
+If \(f(x)=\sum_{n=0}^{\infty} c_{n}(x-a)^{n}\) has a radius of
+convergence of \(R>0\) then,
+
+\[
+f^{\prime}(x)=\sum_{n=1}^{\infty} n c_{n}(x-a)^{n-1}
+\]
+
+and
+
+\[\int f(x) ~dx = \sum_{n=0}^{\infty} c_{n} \frac{(x-a)^{n+1}}{n+1} + C\]
+
+and both of these also have a radius of convergence of \(R\).
+
+For the integrals, pay careful attention to \(C\), as you'll often need
+to solve for it. Good example of integration/finding C
+\href{https://tutorial.math.lamar.edu/Classes/CalcII/PowerSeriesandFunctions.aspx\#:~:text=example\%205\%20find\%20a\%20power\%20series\%20}{here}.
+
+Example of using this find power series of a function:
+
+\[
+\begin{aligned}
+g(x) &=\frac{1}{(1-x)^{2}} \\
+&=\frac{d}{d x}\left(\frac{1}{1-x}\right) \\
+&=\frac{d}{d x}\left(\sum_{n=0}^{\infty} x^{n}\right) \\
+&=\sum_{n=1}^{\infty} n x^{n-1}
+\end{aligned}
+\]
+
+    \subsection{Taylor Series}\label{taylor-series}
+
+The \textbf{Taylor Series} for \(f(x)\) about \(x=a\) is,
+
+\[
+\begin{aligned}
+f(x) &=\sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n !}(x-a)^{n} \\
+&=f(a)+f^{\prime}(a)(x-a)+\frac{f^{\prime \prime}(a)}{2 !}(x-a)^{2}+\frac{f^{\prime \prime \prime}(a)}{3 !}(x-a)^{3}+\cdots
+\end{aligned}
+\]
+
+One thing I noticed with doing Taylor Series is that it actually helps
+to \emph{not} simplify your results for successive derivatives.
+
+\subsubsection{Maclurin Series}\label{maclurin-series}
+
+If we use \(a=0\), so we are talking about the Taylor Series about
+\(x=0\), we call the series a \textbf{Maclaurin Series} for \(f(x)\) or,
+
+\[
+\begin{aligned}
+f(x) &=\sum_{n=0}^{\infty} \frac{f^{(n)}(0)}{n !} x^{n} \\
+&=f(0)+f^{\prime}(0) x+\frac{f^{\prime \prime}(0)}{2 !} x^{2}+\frac{f^{\prime \prime \prime}(0)}{3 !} x^{3}+\cdots
+\end{aligned}
+\]
+
+\subsubsection{Taylor Polynomial
+Remainder}\label{taylor-polynomial-remainder}
+
+Let's define the \(n\)th degree Taylor polynomial of \(f(x)\) as, \[
+T_{n}(x)=\sum_{i=0}^{n} \frac{f^{(i)}(a)}{i !}(x-a)^{i}
+\]
+
+The \(n\)th degree Taylor polynomial is just the partial sum for the
+series.
+
+Next, the \textbf{remainder} is defined to be, \[
+R_{n}(x)=f(x)-T_{n}(x)
+\]
+
+So, the remainder is really just the error between the function \(f(x)\)
+and the \(n^{\text {th }}\) degree Taylor polynomial for a given \(n\).
+With this definition note that we can then write the function as, \[
+f(x)=T_{n}(x)+R_{n}(x)
+\] We now have the following Theorem.
+
+\subsubsection{Examples}\label{examples}
+
+\[
+\begin{gathered}
+f^{(n)}(0)=\mathbf{e}^{0}=1 \quad n=0,1,2,3, \ldots \\
+\mathbf{e}^{x}=\sum_{n=0}^{\infty} \frac{1}{n !} x^{n}=\sum_{n=0}^{\infty} \frac{x^{n}}{n !}
+\end{gathered}
+\]
+
+Doing Taylor Series for say, \(e^{-x}\) is trivial once you know the
+above, as you can just plug stuff in with series. Composability.
+
+\[
+\cos(x)=\sum_{n=0}^{\infty} \frac{(-1)^{n} x^{2 n}}{(2 n) !}
+\]
+
+\[
+\sin x=\sum_{n=0}^{\infty} \frac{(-1)^{n} x^{2 n+1}}{(2 n+1) !}
+\]
+
+Sometimes you'll have to pluck out finite terms if x is undefined for
+part of the series.
+\href{https://tutorial.math.lamar.edu/Classes/CalcII/TaylorSeries.aspx\#:~:text=in\%20order\%20to\%20plug\%20this\%20into\%20the\%20taylor\%20series\%20formula}{Example
+of that}
+
+\paragraph{Euler's Formula Example}\label{eulers-formula-example}
+
+Combining sin and cos with complex two allows you to get Euler's
+formula..
+
+\href{https://www.khanacademy.org/math/ap-calculus-bc/bc-series-new/bc-10-14/v/euler-s-formula-and-euler-s-identity?modal=1}{Great
+Video by Khan} which demonstrates this. I copied
+\href{https://en.wikipedia.org/wiki/Euler\%27s_formula\#Using_power_series}{power
+series proof from wiki} tho:
+
+\[
+\begin{aligned}
+e^{i x} &=1+i x+\frac{(i x)^{2}}{2 !}+\frac{(i x)^{3}}{3 !}+\frac{(i x)^{4}}{4 !}+\frac{(i x)^{5}}{5 !}+\frac{(i x)^{6}}{6 !}+\frac{(i x)^{7}}{7 !}+\frac{(i x)^{8}}{8 !}+\cdots \\
+&=1+i x-\frac{x^{2}}{2 !}-\frac{i x^{3}}{3 !}+\frac{x^{4}}{4 !}+\frac{i x^{5}}{5 !}-\frac{x^{6}}{6 !}-\frac{i x^{7}}{7 !}+\frac{x^{8}}{8 !}+\cdots \\
+&=\left(1-\frac{x^{2}}{2 !}+\frac{x^{4}}{4 !}-\frac{x^{6}}{6 !}+\frac{x^{8}}{8 !}-\cdots\right)+i\left(x-\frac{x^{3}}{3 !}+\frac{x^{5}}{5 !}-\frac{x^{7}}{7 !}+\cdots\right) \\
+&=\cos x+i \sin x
+\end{aligned}
+\]
+
+\subsubsection{Lagrange Error Bound}\label{lagrange-error-bound}
+
+We want to estimate \(f(x)\) with a Taylor polynomial about \(c\).
+
+\[f(x) = P_n(x) + R_n(x)\]
+
+Let
+
+\[ |f^{(n+1)}(z)| \le M \text{ where } z \in (c,x)\]
+
+Then the Lagrange bound for \(R_{n}(x)\), the error of approximating
+\(f(x)\) with the \(n^{\text {th}}\) degree Taylor polynomial about
+\(c\) is
+
+\[
+\left|R_{n}(x)\right| \leq\left|\frac{M}{(n+1) !}(x-c)^{n+1}\right|
+\]
+
+Combined as:
+
+\[
+\left|R_{n}(x)\right| \leq\left|\frac{f^{(n+1)}(z)}{(n+1) !}(x-c)^{n+1}\right| \text{ where } z \in (c,x)
+\]
+
+So you'll want to take the max in that interval, which so far for
+problems I've encountered is always on one of the endpoints. So just
+check which endpoint (c or x) and use that one as the max.
+
+These Lagrange Error Bound equations are best employed on problems where
+you are either: - given a bound - given a function with a clear bound..
+like sin(x)/cos(x) you know they can't go beyond \textbar1\textbar.
+
+    \section{Binomial Series}\label{binomial-series}
+
+The Binomial Theorem required that n be a positive integer. There is an
+extension to this however that allows for any number at all.
+
+If \(k\) is any number and \(|x|<1\) then, \[
+\begin{aligned}
+(1+x)^{k} &=\sum_{n=0}^{\infty}\left(\begin{array}{l}
+k \\
+n
+\end{array}\right) x^{n} \\
+&=1+k x+\frac{k(k-1)}{2 !} x^{2}+\frac{k(k-1)(k-2)}{3 !} x^{3}+\cdots
+\end{aligned}
+\]
+
+\end{document}

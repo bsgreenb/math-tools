@@ -1,0 +1,45 @@
+\documentclass[11pt]{article}
+\usepackage{math-notes-preamble}
+
+\title{InformationTheory}
+
+\begin{document}
+\maketitle
+
+\section{Sources}\label{sources}
+
+    \section{Entropy}\label{entropy}
+
+\href{https://en.wikipedia.org/wiki/Entropy_(information_theory)}{Wiki}
+
+In~\href{https://en.wikipedia.org/wiki/Information_theory}{information
+theory}, the~\textbf{entropy}~of
+a~\href{https://en.wikipedia.org/wiki/Random_variable}{random
+variable}~is the average level of ``information'', ``surprise'', or
+``uncertainty'' inherent to the variable's possible outcomes. Given a
+discrete random variable \(X\), which takes values in the alphabet
+\(\mathcal{X}\) and is distributed according to
+\(p: \mathcal{X} \rightarrow[0,1]\) : \[
+\mathrm{H}(X):=-\sum_{x \in \mathcal{X}} p(x) \log p(x)=\mathbb{E}[-\log p(X)]
+\]
+
+The choice of base for \(\log\), the logarithm, varies for different
+applications. Base 2 gives the unit of bits (or ``shannons''), while
+base e gives ``natural units'' nat, and base 10 gives units of ``dits'',
+``bans'', or ``hartleys''. An equivalent definition of entropy is the
+expected value of the self-information of a variable.
+
+\subsection{Introduction}\label{introduction}
+
+The core idea of information theory is that the ``informational value''
+of a communicated message depends on the degree to which the content of
+the message is surprising. If a highly likely event occurs, the message
+carries very little information. On the other hand, if a highly unlikely
+event occurs, the message is much more informative. For instance, the
+knowledge that some particular number will not be the winning number of
+a lottery provides very little information, because any particular
+chosen number will almost certainly not win. However, knowledge that a
+particular number will win a lottery has high informational value
+because it communicates the outcome of a very low probability event.
+
+\end{document}

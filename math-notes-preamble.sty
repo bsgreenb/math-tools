@@ -1,0 +1,94 @@
+% math-notes-preamble.sty - Shared preamble for converted Jupyter notebooks
+% Usage: \usepackage{math-notes-preamble}
+
+\ProvidesPackage{math-notes-preamble}
+
+% Basic packages
+\usepackage{parskip}
+\usepackage{graphicx}
+\setkeys{Gin}{keepaspectratio}
+\usepackage{caption}
+\DeclareCaptionFormat{nocaption}{}
+\captionsetup{format=nocaption,aboveskip=0pt,belowskip=0pt}
+
+\usepackage{float}
+\floatplacement{figure}{H}
+\usepackage{xcolor}
+\usepackage{enumerate}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{upquote}
+
+\usepackage{iftex}
+\ifPDFTeX
+    \usepackage[T1]{fontenc}
+    \IfFileExists{alphabeta.sty}{
+          \usepackage{alphabeta}
+      }{
+          \usepackage[mathletters]{ucs}
+          \usepackage[utf8x]{inputenc}
+      }
+\else
+    \usepackage{fontspec}
+    \usepackage{unicode-math}
+\fi
+
+\usepackage{fancyvrb}
+\usepackage[Export]{adjustbox}
+\adjustboxset{max size={0.9\linewidth}{0.9\paperheight}}
+
+\usepackage{hyperref}
+\usepackage{titling}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{calc}
+\usepackage[inline]{enumitem}
+\usepackage[normalem]{ulem}
+\usepackage{soul}
+\usepackage{mathrsfs}
+
+% Colors for hyperref
+\definecolor{urlcolor}{rgb}{0,.145,.698}
+\definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+\definecolor{citecolor}{rgb}{.12,.54,.11}
+
+% Pandoc compatibility
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{%
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa\textheight{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb\linewidth{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@
+    \let\@tempa\@tempb
+  \fi
+  \ifdim\@tempa\p@<\p@
+    \scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else
+    \usebox{\pandoc@box}%
+  \fi
+}
+\makeatother
+
+% Math Jax compatibility
+\def\gt{>}
+\def\lt{<}
+
+% Hyperref setup
+\hypersetup{
+  breaklinks=true,
+  colorlinks=true,
+  urlcolor=urlcolor,
+  linkcolor=linkcolor,
+  citecolor=citecolor,
+}
+
+% Margins
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+

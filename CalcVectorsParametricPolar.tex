@@ -1,0 +1,204 @@
+\documentclass[11pt]{article}
+\usepackage{math-notes-preamble}
+
+\title{CalcVectorsParametricPolar}
+
+\begin{document}
+\maketitle
+
+\section{Parametric Equations}\label{parametric-equations}
+
+Time (\(t\)) tends to be the parameter used, but it could be something
+else.
+
+\subsection{Defining and differentiating parametric
+equations}\label{defining-and-differentiating-parametric-equations}
+
+First derivative:
+
+\[\frac{dy}{dx} = \frac{\frac{dy}{dt}}{\frac{dx}{dt}}\]
+
+Second derivative:
+
+\[ \frac{d^2y}{dx^2} = \frac{d}{dx}\left(\frac{dy}{dx}\right) = \frac{\frac{d\left(\frac{dy}{dx}\right)}{dt}}{\frac{dx}{dt}}\]
+
+\subsection{Parametric Curve Arc
+Length}\label{parametric-curve-arc-length}
+
+Let's start with the magic differential approach taken on the
+\href{https://www.khanacademy.org/math/ap-calculus-bc/bc-advanced-functions-new/bc-9-3/v/parametric-curve-arc-length?modal=1}{Khan
+Vid}:
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={image.png}]{images/parametric-arc-length.png}}
+\caption{image.png}
+\end{figure}
+
+Using the pythagorean theorem here we get:
+
+\[ 
+L = \int_a^b ds = \int_a^b \sqrt{(dx)^2 + (dy)^2} \\
+\int_a^b \sqrt{(\frac{dx}{dt}dt)^2 + (\frac{dy}{dt}dt)^2} 
+\]
+
+Then factoring out the \(dt\)'s magically:
+
+\[
+\int_a^b \sqrt{(dt)^2(\frac{dx}{dt})^2 + (\frac{dy}{dt})^2} \\
+\int_a^b \sqrt{(\frac{dx}{dt})^2 + (\frac{dy}{dt})^2}dt
+\]
+
+But the more rigorous proof is on
+\href{https://tutorial.math.lamar.edu/classes/calcii/ParaArcLength.aspx}{Paul's
+Math Notes}. It does some funky stuff with absolute value I'm not
+completely groking.
+
+    \section{Polar Curves/Equations}\label{polar-curvesequations}
+
+Good \href{https://brilliant.org/wiki/polar-curves/}{Overview on
+Brilliant}.
+
+\begin{quote}
+A polar curve is a shape constructed using the polar coordinate system.
+Polar curves are defined by points that are a variable distance from the
+origin (the pole) depending on the angle measured off the positive
+x-axis. Polar curves can describe familiar Cartesian shapes such as
+ellipses as well as some unfamiliar shapes such as cardioids and
+lemniscates.
+\end{quote}
+
+One advantage of using polar equations is that certain relations that
+are not functions in Cartesian form can be expressed as functions in
+polar form.
+
+\subsection{Derivatives of Polar
+Curves}\label{derivatives-of-polar-curves}
+
+Derivatives of Polar Curves To find \(\frac{d y}{d x}\) given that
+\(x=r \cos \theta\) and \(y=r \sin \theta\), we can find
+\(\frac{d y}{d \theta}\) and \(\frac{d x}{d \theta}\). Upon dividing the
+former by the latter, we get \(\frac{d y}{d x}\).
+
+For a polar curve, \[
+\frac{d y}{d x}=\frac{\frac{d r}{d \theta} \sin \theta+r \cos \theta}{\frac{d r}{d \theta} \cos \theta-r \sin \theta}
+\] Important facts to note: - When \(\frac{d y}{d \theta}=0\), we have
+horizontal tangent lines. - When \(\frac{d x}{d \theta}=0\), we have
+vertical tangent lines.
+
+\subsection{Areas Bound by Polar
+Curves}\label{areas-bound-by-polar-curves}
+
+Whereas with a cartestian graph we'd use rectangles to get an integral,
+with a polar graph it's more taking a bunch of rotating pie pieces.
+Infinitely thin pie slices. Area of these sectors given by:
+
+\[\frac{\theta}{2\pi}\pi r^2 = \frac{\theta}{2}r^2 = \frac{1}{2}r^2\theta\]
+
+\(\theta\) -\textgreater{} \(d\theta\) as slice gets infinitely small..
+So we can calculate the slices over a given angular interval as:
+
+\[ \int_\alpha^\beta \frac{1}{2}r^2~d\theta \]
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={image.png}]{CalcVectorsParametricPolar_files/928f7302-b688-4ca8-ae19-0522aa577d21.png}}
+\caption{image.png}
+\end{figure}
+
+So if you're calculating the area between polar curves, the key thing
+will be to identity where those curves intersect, and use that to
+determine your integrals.
+
+Be on the lookout for symmetries when you're looking at areas between
+curves.
+
+    \section{Vectors from Calc}\label{vectors-from-calc}
+
+{[}MAKES SENSE to integrate this in line with below sections from Linear
+Alg{]}
+
+Using
+\href{https://www.khanacademy.org/math/get-ready-for-ap-calc/xa350bf684c056c5c:get-ready-for-parametric-polar-vector}{Khan}
+to get the basics here just as part of doing AP Calc. But will expand
+this once taking on Linear Algebra.
+
+A \textbf{Vector} has a \textbf{magnitude/size} and a
+\textbf{direction/angle}. A \textbf{Scalar} only has the former.
+
+A vector is not defined by it's starting point, just its magnitude and
+direction. It could be dropped anywhere on a graph.
+
+Vectors can be split up into Parametric Equations.
+\href{https://math.stackexchange.com/a/1940372/49487}{0 upvote MSE
+Question} which hopefully is correct:
+
+\begin{quote}
+parametric equation with only one parameter, it's the same thing. The
+parametric equations are the components of the vector function.
+\end{quote}
+
+\href{https://en.wikipedia.org/wiki/Euclidean_vector}{Euclidean Vectors}
+are all I dealt with in Calc. When taking on Linear, will move beyond
+these. \href{https://en.wikipedia.org/wiki/Position_(geometry)}{Position
+Vectors} are Euclidean Vectors that start at the origin at point to
+something in Euclidean space.
+
+\href{https://en.wikipedia.org/wiki/Vector_space}{Vector Space} {[}Write
+formal definition of vector (Spaces) as part of linear alg{]}
+
+\subsection{Norm / Magnitude}\label{norm-magnitude}
+
+Vector magnitude from components: The magnitude of \((a, b)\) is
+\(\|(a, b)\|=\sqrt{a^{2}+b^{2}}\).
+
+\subsection{Direction of Vectors}\label{direction-of-vectors}
+
+Arctan has a limited range, so if you want to get an angle from the
+vector components. In Quadrants II and III, you'll wanna add 180. In
+Quadrant IV, you'll get a negative angle which you can add 360 to to get
+a positive one.
+
+If you're using \href{https://en.wikipedia.org/wiki/Atan2}{atan2}, it
+works a bit different than that.
+
+\subsection{Vector components from magnitude and
+direction}\label{vector-components-from-magnitude-and-direction}
+
+The components of a vector with magnitude \(\|\vec{u}\|\) and direction
+\(\theta\) are
+\((\|\vec{u}\| \cos (\theta),\|\vec{u}\| \sin (\theta))\).
+
+\subsection{Unit Vectors}\label{unit-vectors}
+
+\href{https://en.wikipedia.org/wiki/Unit_vector}{Unit vector} is a
+vector of length 1.
+
+\href{https://math.stackexchange.com/questions/965477/unit-vector-symbols-names}{Notation
+varies} for them, but Khan seems to prefer \(\hat i, \hat j\).
+
+\subsection{Multiplying and Dividing
+Vectors}\label{multiplying-and-dividing-vectors}
+
+\textbf{Scalar Multiplication} is scalar times a vector. Pretty
+straightforward since it just multiplies the components.
+
+\subsection{Vector valued functions}\label{vector-valued-functions}
+
+Typical notation for a \textbf{Vector Function} aka \textbf{Vector
+Valued Function} is either arrow over like \(\vec{v}\) (I prefer, cus I
+write it same with pencil) or else bold it.
+
+\(\vec{r}(t) = x(t)\hat i + y(t)\hat j\)
+
+From this definition, and the limit definition of a derivative, we see
+that we can get the derivative of vector functions.
+
+\subsubsection{Vector Valued Function
+Differentiation}\label{vector-valued-function-differentiation}
+
+The derivative of a vector is itself a vector.
+
+\(\vec{r}'(t) = x'(t)\hat i + y'(t)\hat j\)
+
+\end{document}

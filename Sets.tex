@@ -1,0 +1,185 @@
+\documentclass[11pt]{article}
+\usepackage{math-notes-preamble}
+
+\title{Sets}
+
+\begin{document}
+\maketitle
+
+Note: I wrote this out a while ago, before I did \emph{The Book of
+Proof}. I would recommend to go through The Book of Proof for learning
+the stuff you see here which was pulled from less organized or complete
+sources.
+
+See also: \url{Logic}
+
+A \textbf{Set} is a collection of of objects called elements. Sets can
+be finite or infinite.
+
+\[ A = \{1,2,3\} \]
+
+\[ \mathbb{Z}^+ = \{1,2,3,4...\} \]
+
+There is no repitition or order in sets:
+
+\[ \{3,2,1\} = \{1,2,3,3\} \]
+
+Our \textbf{Universe} is the set containing all the elements in our
+scope.
+
+\section{Sets of Numbers}\label{sets-of-numbers}
+
+\$ \mathbb{R} \$ The set of real numbers.
+
+\$ \mathbb{Z} \$ The set of integers. The numbers
+\{\ldots,−3,−2,−1,0,1,2,3,\}.
+
+\$ \mathbb{N} \$ The set of natural numbers. The numbers
+\{1,2,3,4,\ldots\}
+
+\$ \mathbb{C} \$ The set of complex numbers.
+
+\section{Elements and Cardinality}\label{elements-and-cardinality}
+
+\$ \in \$ is an element of
+
+\$ \notin \$ is not an element of
+
+\$ \textbar S\textbar{} \$ number of elements of S
+(\textbf{Cardinality})
+
+\section{The empty set}\label{the-empty-set}
+
+\[ \emptyset = \{\} \]
+
+\[ |\emptyset| = 0 \]
+
+\[ |\{\emptyset\}| = 1 \]
+
+\section{Set Builder and Interval
+Notation}\label{set-builder-and-interval-notation}
+
+\textbf{Set Builder Notation}: Elements on the left, conditions (or
+really predicate) on the right.
+
+\[ \{\frac{m}{n} | m,n\in\mathbb{Z},n \ne 0\} \]
+
+\textbf{Interval Notation}:
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  a square bracket when we want to include the end value, or
+\item
+  ( ) a round bracket when we do Not want to
+\end{itemize}
+
+\section{Cartesian Products}\label{cartesian-products}
+
+An \textbf{ordered pair} \$ (a, b) \$ is a set
+
+\[ \{\{a\}, \{a,b\}\} \]
+
+This provides order without sets having built in order. This allows you
+to distinguish \((2,1)\) from \((1,2)\).
+
+The \textbf{Cartesian Product} \$ A \times B \$, which is the set:
+
+\[ \{(x,y) | x \in A, y \in B\} \]
+
+Don't confuse these with regular math products, they dont't have the
+same associativity and commutativity, via the order mattering. Note that
+the cardinality does follow those rules tho..
+
+Cardinality of Cartesian Products
+
+\[ |A| \times |B| = |A \times B| \]
+
+Empty set times anything will get you back the empty set:
+
+\[ \emptyset \times A = \emptyset \]
+
+\section{Subsets}\label{subsets}
+
+If A is a \textbf{Subset} of B, then every element in A must also be in
+B. Subset
+
+\[ \{1,2\} \subset \{1,2,3\} \] \[ \{1,2\} \subset \{1,2\} \]
+
+Proper subset means its not the same set, the subset being smaller.
+People diverge in their use here
+https://math.stackexchange.com/questions/1114920/does-anyone-use-subset-for-proper-subset-anymore
+
+\[ \{1,2\} \subsetneq \{1,2,3\} \]
+
+The empty set is a Subset of everything:
+
+\[ \emptyset \subset A\]
+
+\section{Power Sets}\label{power-sets}
+
+A \textbf{Power Set} of A, is the set containing all possible subsets of
+A. We can use \(p(A)\) for this, since I dont wanna use the BB notation
+for dis.
+
+ 
+\begin{align*}
+& A = \{a,b\} \\
+& p(A) = \{\{a,b\}, \{a\}, \{b\}, \emptyset \} \\
+\end{align*}
+
+The size/cardinality of the powerset of a set is a power of 2 of that
+set's cardinality.
+
+\[ |p(A)| = 2^{|A|} \] \[ p(\emptyset) = \{\emptyset\} \]
+
+\section{Set Operations}\label{set-operations}
+
+\textbf{Complement}: \$ A' = \bar\{A\} = \{ x \textbar{} x \notin A \}
+\$.
+
+\textbf{Intersection}: \$ A \cap B = \{ x \textbar{} x \in A, x \in B \}
+\$
+
+\textbf{Union}: \$ A \cup B = \{ x \textbar{} x \in A \lor x \in B \} \$
+
+\textbf{Difference}: \$ A - B = A \setminus B = \{ x \textbar{} x
+\in A,x \notin B \} \$
+
+\textbf{Symmetric Difference} or \textbf{Disjoint Union}: \$ A \oplus B
+= A \triangle B = A \{ x \textbar{} x \in A \oplus x \in B \} \$
+
+Note I wrote out both notations I'm seein out there for Complement,
+Difference, and Symmetric Difference.
+
+\section{Set Laws}\label{set-laws}
+
+Note that these rules have corresponding Logic Laws. I believe this is
+because they're both boolean algebras.
+
+https://web.uvic.ca/\textasciitilde gmacgill/LFNotes/LawsOfSetTheory.pdf
+
+\section{Indexed Sets}\label{indexed-sets}
+
+You can iterate over Union and Intersection with this notation:
+
+\textbf{Union of Indexed Set} \[ 
+\bigcup_{i=0}^{n} F_{i} = {A}_{0}\cup{A}_{1}\cup{A}_{2}\cup\dots\cup{A}_n 
+\]
+
+\textbf{Intersection of Indexed Set} \[ 
+\bigcap_{i=0}^{n} F_{i} = {A}_{0}\cap{A}_{1}\cap{A}_{2}\cap\dots\cap{A}_n 
+\]
+
+    \section{Partition}\label{partition}
+
+A \textbf{partition} of a set \(A\) is a set of non-empty subsets of
+\(A\), such that the union of all the subsets equals \(A\), and the
+intersection of any two subsets is \(\emptyset\).
+
+    \section{See Also}\label{see-also}
+
+\href{RelationsFunctions.ipynb}{Relations/Functions} which are based
+like everything else on sets.
+
+\end{document}

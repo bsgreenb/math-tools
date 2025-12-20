@@ -1,0 +1,254 @@
+\documentclass[11pt]{article}
+\usepackage{math-notes-preamble}
+
+\title{MultiVariableCalc}
+
+\begin{document}
+\maketitle
+
+A function is called \textbf{multivariable} if its input is made up of
+multiple numbers, e.g.~\(f(x,y)\).
+
+If the output consists of multiple numbers, it may also be called
+multivariable, but these ones are typically called \textbf{vector-valued
+functions}. An example would be
+\(f(x) = \begin{bmatrix}\cos(x) \\ \sin(x)\end{bmatrix}\).
+
+\section{Derivatives of multivariable
+functions}\label{derivatives-of-multivariable-functions}
+
+\subsection{Partial Derivatives}\label{partial-derivatives}
+
+The partial derivative only cares about the changing of one of the
+variables in a multivariable function. For example, the partial
+derivative with respect to \(x\) of \(f(x,y)\) would be:
+\(\frac{\partial f}{\partial x}\). Notationally, we can also represent a
+partial derivative with respect to \(x\) as \(f_x\).
+
+Solving these seems to work how you'd expect, the unchanging parameter
+just acts as constants in your formula.
+
+\subsubsection{Formal definition of partial
+derivative}\label{formal-definition-of-partial-derivative}
+
+Suppose we have \(f(x,y)\). Then
+
+\[\frac{\partial f}{\partial x}(a, b) = \lim_{h \to 0}\frac{f(a + h, b) - f(a,b)}{h}\]
+
+\subsubsection{Second partial
+derivatives}\label{second-partial-derivatives}
+
+We can use the notation \(\frac{\partial^2f}{\partial x^2}\) to indicate
+the double partial derivative with respect to \(x\). To indicate the
+derivative with respect to \(x\) then the derivative of that with
+respect to \(y\), we would write:
+\(\frac{\partial^2f}{\partial y \partial x}\). Sometimes you may see a
+notation \(f_{xx}\) or \(f_{xy}\) respectively.
+
+What we'll find is that there's often a symmetry between second partial
+derivatives. When that symmetry is there, applying the partial
+derivative with respect to \(y\) then with respect to \(x\) is
+equivalent to doing partial with respect to \(x\) then with respect to
+\(y\). In these cases
+\({\partial^2f}{\partial y \partial x} = {\partial^2f}{\partial x \partial y}\).
+The conditions for this symmetry existing are
+\href{https://en.wikipedia.org/wiki/Symmetry_of_second_derivatives}{described
+here on wiki}. Most of the time we'll find this to be true, the
+exceptions occur when there's not continuity at the key point.
+
+\subsubsection{Partial derivative of vector-valued
+function}\label{partial-derivative-of-vector-valued-function}
+
+Just take the partial derivatives of each of the components.
+
+    \subsection{Gradient}\label{gradient}
+
+The \textbf{gradient} is a way of packing together all the partial
+derivative information of a function.
+
+Say we have \(f(x,y) = x^2\sin(y)\). Then
+\(\frac{\partial f}{\partial x} = 2x\sin(y)\), and
+\(\frac{\partial f}{\partial y} = x^2\cos(y)\). The gradient is a vector
+which has the partial derivatives in it,
+\(\nabla f = \begin{bmatrix} 2x\sin(y) \\ x^2\cos(y)\end{bmatrix}\).
+
+More broadly,
+\(\nabla f(x,y) = \begin{bmatrix}\frac{\partial f}{\partial x} \\ \frac{\partial f}{\partial y}\end{bmatrix}\)
+
+    \subsection{Directional Derivatives}\label{directional-derivatives}
+
+With directional derivatives, we take an infinitesimal step in the
+direction of a vector. The notation here is \(\nabla_{\vec{v}}f\), where
+\(\vec{v}\) is the vector you're infinitesimely nudging in the direction
+of.
+
+We can solve for the directional derivative by taking the dot product of
+the directional vector and the gradient:
+
+\[
+\vec{v} \cdot \nabla f
+\]
+
+Let's jump to the formal definition:
+
+\[
+\nabla_{\vec{v}}f(\vec{a}) = \lim_{h\to 0}\frac{f(\vec{a} + h\vec{v}) - f(\vec{a})}{h}
+\]
+
+\subsubsection{Directional derivatives and
+slope}\label{directional-derivatives-and-slope}
+
+Only if the directional vector is a unit vector, would you be able to
+consider the directional derivative to be a slope. So a proper equation
+for getting the slope regardless of the directional vector would be:
+
+\[\frac{\vec{v} \cdot \nabla f}{||\vec{v}||}\]
+
+    \subsection{Multivariable Chain Rule}\label{multivariable-chain-rule}
+
+Simple version of the rule with two dimensional input:
+
+\[\frac{d}{dt}f(x(t), y(t)) = \frac{\partial f}{\partial x}\frac{dx}{dt} + \frac{\partial f}{\partial y}\frac{dy}{dt}\]
+
+More generally we can say:
+
+\[\frac{d}{dt}f(g(t)) = \nabla f(g(t)) \cdot g'(t)\]
+
+If we consider \(g(t)\) to be a vector-valued function \(\vec{v}(t)\),
+We can compactly write this all in vector notation as:
+
+\[\nabla f(\vec{v}(t)) \cdot \vec{v}'(t)\]
+
+This is nice cus it looks like the single variable chain rule.
+
+Grant
+\href{https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives/multivariable-chain-rule/v/multivariable-chain-rule-and-directional-derivatives}{points
+out here} that the chain rule is basically a directional derivative in
+the direction of \(\vec{v}'(t)\).
+
+Formal treatment of the multivariable chain rule
+\href{https://youtu.be/5mMLaK1ByZc}{here}.
+
+    \subsection{Curvature}\label{curvature}
+
+If you imagine you're driving on a road represented by a graph, and the
+steering wheel froze up at a given point, you'd have a circle drawn by
+the motion at any given point. The \textbf{radius of curvature} is the
+radius of that circle. The actual amount of curvature is the reciprocal
+of the radius of curvature, \(\kappa = \frac{1}{R}\).
+
+To calculate the curvature, we look at how quickly the unit vectors
+tangent to the curve change direction. Specifically, we look at the size
+of the derivative of the rate of change of the tangent vectors with
+respect to the arc length:
+
+\[\kappa = ||\frac{dT}{ds}||\]
+
+\subsubsection{Computing curvature}\label{computing-curvature}
+
+We are given a function \(\vec{s}(t)\) which defines a curve in the xy
+plane.
+
+First, we need to find a unit tangent vector. \(\vec{T}(t)\) is a
+vector-valued function which takes in a parameter \(t\) and ouputs a
+unit vector which is tangent to the curve at \(\vec{s}(t)\). We can
+express the unit tangent vector as a function of time by dividing out
+the magnitude, which normalizes to unit vectors:
+
+\[T(t) = \frac{\vec{s}'(t)}{||\vec{s}'(t)||}\]
+
+Next, we need to find \(||\frac{dT}{ds}||\), the derivative of unit
+tangent vector with respect to arc length. The typical way to find this
+is:
+
+\[\kappa = ||\frac{dT}{ds}|| = \frac{||\frac{dT}{dt}||}{||\frac{d\vec{s}}{dt}||}\]
+
+\(\frac{d\vec{s}}{dt}\) is pretty straightforward to find. It's just the
+derivative of the vector-valued function \(\vec{s}\), which is just the
+derivative of the two components of \(\vec{s}\).
+
+Now we can solve for the derivative of the unit tangent,
+\(\frac{dT}{dt}\), and take its magnitude to get \(||\frac{dT}{dt}||\).
+Finally, divide by \(||\vec{s}'(t)||\), which we should have already
+calculated in the process of finding \(T\). From this division we have
+kappa.
+
+\subsubsection{The direct formula}\label{the-direct-formula}
+
+We can hop ahead to kappa directly with this formula:
+
+\[\kappa = \frac{x'y'' - y'x''}{((x')^2 + (y')^2)^{\frac{3}{2}}}\]
+
+    \subsection{Divergence}\label{divergence}
+
+Imagine a vector field as fluid flow, where particles move along the
+vectors over time. If you have a given point, does fluid tend to flow
+towards that point, or does it \textbf{diverge} away from it.
+
+Positive divergence means particles flow away from the point on net.
+Negative divergence means particles flow towards the point on net. When
+divergence is 0, the amount flowing in is balanced with the amount
+flowing out.
+
+\subsubsection{Divergence formula}\label{divergence-formula}
+
+We have a vector-valued function,
+\(\vec{v}(x,y) = \begin{bmatrix}P(x,y) \\ Q(x,y)\end{bmatrix}\). Then
+\(\text{div}\vec{v}(x,y) = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y}\).
+
+There's another notation for divergence:
+
+\[\nabla \cdot \vec{v}\]
+
+This makes sense if you think of \(\nabla\) as a vector of partial
+derivative operators.
+
+    \subsection{Curl}\label{curl}
+
+Say we have particles moving around a vector field. In a region where
+there's counter-clockwise rotation, we say the curl is positive. In a
+region where there's clockwise rotation, we say the curl is negative.
+When there's no net rotation, we say there is zero curl.
+
+Sometimes it's not obvious from looking at a graph of the vector field
+where the curl is. One trick is to consider it like a spinny wheel at
+the point you're at. Does it spi
+
+\subsubsection{Formula for 2d Curl}\label{formula-for-2d-curl}
+
+We have \(\vec{v}(x,y) = \begin{bmatrix}P(x,y) \\ Q(x,y)\end{bmatrix}\).
+
+\[\text{curl}(\vec{v}(x,y)) = \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\]
+
+\subsubsection{3-d Curl}\label{d-curl}
+
+With 2d-rotation, it's possible to represent it all with just one
+number, which is how quickly it rotates around. Clockwise vs
+counterclockwise can be represented by negative vs positive. When we
+look at 3d rotation, it's not enough to have just one number. We need
+both the axis and the speed of rotation to completely describe the
+rotation, in other words a vector.
+
+The rate at which rotation occurs in 3d is called the \textbf{angular
+velocity}. The direction describes the \textbf{axis of rotation}. But
+which way should the vector point? Since it could go both ways. For this
+we have a convention called the right hand rule.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={image.png}]{images/right-hand-rule.png}}
+\caption{image.png}
+\end{figure}
+
+We need a 3-dimensional vector to describe the rotation in 3D. The
+magnitude of the vector gives the angular velocity, and the direction
+gives the axis of rotation.
+
+So how do we compute 3d-curl? With a 3d vector field we have:
+\(\vec{v}(x,y,z) = \begin{bmatrix} P(x,y,z) \\ Q(x,y,z) \\ R(x,y,z)\end{bmatrix}\).
+What we want to find is the rotation at any given x,y,z coordinate.
+
+{[}I'm stopping part way through here. I can continue on multivariable
+later on this section if I decide to{]}
+
+\end{document}

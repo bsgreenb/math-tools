@@ -1,0 +1,344 @@
+\documentclass[11pt]{article}
+\usepackage{math-notes-preamble}
+
+\title{Logic}
+
+\begin{document}
+\maketitle
+
+See also: \url{Sets}
+
+\section{Propositional Logic}\label{propositional-logic}
+
+\textbf{Statement} is a a declarative sentence that can be True (1) or
+False (0). A \textbf{Proposition} is the meaning expressed by that
+statement.
+
+Syntax: \textbf{well formed formulas (WFFs)} are combinations of
+Propositions, Connectives, punctuation, and other woofs. Propositions
+cannot be based around variables, like in first order logic.
+
+\$ \top \quad\$ Tautology. Unconditionally True.
+
+\$ \bot \quad\$ Contradiction.
+
+A woof that is neither a Tautology nor a Contradiction is called
+Contingent.
+
+\subsection{Logical Operators}\label{logical-operators}
+
+\$ \lnot A \quad\$ Not A
+
+\$ A \land B \quad\$ A And B
+
+\$ A \lor B \quad\$ A Or B
+
+\$ A \oplus B \quad\$ A Xor B
+
+\$ A \uparrow B \quad\$ A NAnd B
+
+\$ A \rightarrow B = \lnot A \lor B \quad\$ A Implies B = A or Not B.
+Material implication.
+
+\$ A \leftrightarrow B = (A \rightarrow B) \^{} (B \rightarrow A)
+\quad\$ Biconditional, material equivalence. If and only if (iff)
+
+\$ x := y \quad\$ x is defined as y. \(:=\) is Definition.
+
+\$ \therefore \quad\$ Therefore.
+
+\subsubsection{Meta-logical operators}\label{meta-logical-operators}
+
+A quick note on meta-logic. The operators used above are for specific
+A's and B's, but meta-logic is meant to apply to any wffs, in other
+words, these operators deal in tautologies and logical equivalence,
+rather than material equivalence. See
+\href{https://math.stackexchange.com/questions/68932/whats-the-difference-between-material-implication-and-logical-implication}{Material
+vs Logical Implication on SE}.
+
+Here are our meta-logical operators:
+
+\$ A \Rightarrow B \quad\$ Logical Implication.
+
+\$ A \Leftrightarrow B \quad\$ Logical Equivalence. \$ \equiv \$ is also
+used here.
+
+\$ A \vdash B \quad \$ A Proves B
+
+\$ A \models B \quad \$ A Models B
+
+Note that in a logical system that is meta-logically \textbf{Sound}
+(like First Order Logic):
+
+\[ A \vdash B \implies A \models B \]
+
+And in a logical system that is meta-logically \textbf{Complete} (like
+First Order Logic):
+
+\[ A \models B \implies A \vdash B \]
+
+We will use these meta-logical operators (specficallty \$
+\Leftrightarrow \$ and \$ \vdash \$) to define the following Logic Laws
+themselves, whereas you would use the logical operators above when
+actually applying these rules.
+
+Note: Many of these symbols are overridden by different logical
+conventions, especially the double arrow may be material equivalence to
+some people. Still, I'll use it here and maintain the single (material)
+vs double (logical) arrow distinction.
+
+\subsection{Logic Laws}\label{logic-laws}
+
+Note that these rules have corresponding \href{Sets}{Set} Laws.
+
+\subsubsection{Rules of Replacement}\label{rules-of-replacement}
+
+The Rules of Replacement go both ways, and are thus indicated with
+logical equivalence operator \$ \Leftrightarrow \$.
+
+\textbf{Identity}: \[ P \land \top \Leftrightarrow P \]
+\[ P \lor \bot \Leftrightarrow P \]
+
+\textbf{Domination}: \[ P \lor \top \Leftrightarrow \top \]
+\[ P \land \bot \Leftrightarrow \bot \]
+
+\textbf{Double Negation}: \[ \lnot \lnot P \Leftrightarrow P \]
+
+\textbf{De Morgans's Law}:
+\[ \lnot (P \lor Q) \Leftrightarrow \lnot P \land \lnot Q \]
+\[ \lnot (P \land Q) \Leftrightarrow \lnot P \lor \lnot Q \]
+
+\textbf{Distributive}:
+\[ P \lor (Q \land R) \Leftrightarrow (P \lor Q) \land (P \lor R) \]
+\[ P \land (Q \lor R) \Leftrightarrow (P \land Q) \lor (P \land R) \]
+
+\textbf{Composition}:
+\[ ((p \rightarrow q)\land (p\to r)) \Leftrightarrow (p \rightarrow (q\land r)) \]
+
+\textbf{Absorption}:
+https://math.stackexchange.com/questions/4323450/why-is-the-absorption-law-considered-a-rule-of-inference-instead-of-replacement
+
+\textbf{Commutativity}:
+
+\[ P \lor Q \Leftrightarrow Q \lor P \]
+\[ P \land Q \Leftrightarrow Q \land P \]
+
+\textbf{Associativity}:
+
+\[ P \lor (Q \lor R) \Leftrightarrow (P \lor Q) \lor R \]
+\[ P \land (Q \land R) \Leftrightarrow (P \land Q) \land R \]
+
+\textbf{Inverse}:
+
+\[ P \lor \lnot P \Leftrightarrow \top \]
+\[ P \land \lnot P \Leftrightarrow \bot \]
+
+\textbf{Material Implication}:
+\[ P \rightarrow Q \Leftrightarrow \lnot P \lor Q \]
+
+\subsubsection{Rules of Inference}\label{rules-of-inference}
+
+A set of \textbf{Premises} \$ p\_1,p\_2,\dots,p\_n \$ prove some
+conclusion \(q\) in an \textbf{Argument}.
+
+\[
+(p_1 \land p_2 \land \dots \land p_n) \implies q
+\]
+
+An argument is \textbf{Valid} if the premises logically entail the
+conlcusion. An argument is \textbf{Sound} if the premises are also true.
+
+The Rules of Inference go in one direction, unlike the Rules of
+Replacement. We use the Proves operator \$ \vdash \$ here, even though
+we could use \$ \Rightarrow \$ to indicate Logical Implication. We favor
+the less ambiguous operator, since it's possible here.
+
+\textbf{Modus Ponens (MPP)}:
+
+\[ ((P \rightarrow Q) \land P) \vdash Q \]
+
+\textbf{Modus Tollens (MT)}:
+
+\[ ((P \rightarrow Q) \land \lnot Q) \vdash \lnot P \]
+
+\textbf{Hypothetical Syllogism (HS)}:
+
+\[ ((P \rightarrow Q) \land (Q \rightarrow P)) \vdash P \rightarrow R \]
+
+\textbf{Disjunctive Syllogism (DS)}:
+
+\[ ((P \lor Q) \land \lnot P) \vdash Q \]
+
+\textbf{Disjunction Introduction ( \(\lor\) I)} aka \textbf{Addition
+(A)} :
+
+\[ P \vdash (P \lor Q) \]
+
+\textbf{Disjunction Elimination ( \(\lor\) E)} aka \textbf{Elimination}:
+
+\[ ((P \rightarrow Q) \land (R \rightarrow Q) \land (P \lor R)) \vdash Q\]
+
+\textbf{Conjunction Elimination ( \(\land\) E)} aka
+\textbf{Simplification (S)}:
+
+\[ (P \land Q) \vdash P \]
+
+\textbf{Conjunction Introduction ( \(\land\) I)} aka just
+\textbf{Conjunction}:
+
+\[ P,Q \vdash (P \land Q) \]
+
+    \subsubsection{Conditionals}\label{conditionals}
+
+\textbf{Conditional}: \$ A \rightarrow B \$
+
+\textbf{Converse}: \$ B \rightarrow A \$
+
+\textbf{Inverse}: \$ \lnot A \rightarrow \lnot B \$
+
+\textbf{Contrapositive}: \$ \lnot B \rightarrow \lnot A \$
+
+Only Contrapositive is equivalent to the Conditional via Material
+Implication.
+
+    \section{First Order Logic}\label{first-order-logic}
+
+In \textbf{First Order Logic} aka \textbf{Predicate Logic} we get some
+extra abiltiies. Now we can use Open Formulas like ``x is greater than
+y'' which are not evaluated to True or False (as opposed to a closed
+formula like 6 is greater than 2).
+
+And more importantly we get Quantifiers. Here be the quantifiers
+
+\$ \forall \$ This symbol means for all (or sometimes, for every). For
+example, ``∀ squares D, D is a rectangle''. \textbf{Universal
+Quantifier}.
+
+\$ \exists \$ This symbol means there exists. It can actually imply
+``there exists\ldots{} such that'' For example, ``∃ a horse''.
+\textbf{Existential Quantifier}.
+
+\$ \nexists \$ This symbol means there does not exist. For example, ''
+\$ \nexists \$ a unicorn''. (yet)
+
+\$ \exists! \$ This symbol means only one exists. \textbf{Unique
+Quantifier}.
+
+    \subsection{Predicate Logic Rules}\label{predicate-logic-rules}
+
+\textbf{Equivalencies}:
+
+\[ \forall x P(x) \Leftrightarrow \lnot \exists x[\lnot P(x)] \]
+\[ \exists x P(x) \Leftrightarrow \lnot \forall x[\lnot P(x)] \]
+\[ \lnot \forall x[P(x)] \Leftrightarrow \exists x[\lnot P(x)] \]
+\[ \lnot \exists x[P(x)] \Leftrightarrow \forall x[\lnot P(x)] \]
+
+Note the pattern in terms of flipping quantifiers and negations.
+
+\textbf{Universal Elimination} or \textbf{Universal Instantiation}: \$
+\forall x{[}P{]} \vdash P(a) \$
+
+\textbf{Universal Introduction} or \textbf{Universal Generalization}: \$
+P(x) \text{For arbitrary x} \vdash \forall x{[}P(x){]} \$
+
+\textbf{Existential Elimination} or \textbf{Existential Instantiation}:
+\$ (\exists x{[}P(x){]} \vdash P(c) \text{For some c} \$
+
+\textbf{Existential Introduction} or \textbf{Existential
+Generalization}: \$ P(c) \text{For some element c}
+\vdash \exists x{[}P(x){]} \$
+
+    \section{Proofs}\label{proofs}
+
+\textbf{Theorem}s are what you prove with \textbf{axioms} and other
+theorems. A theorem is a wff that is true/a tautology without any
+premises/assumptions required.
+
+The end of the proof may be signaled by the letters Q.E.D. (quod erat
+demonstrandum) or by one of the tombstone marks, such as ``□'' or ``∎''
+
+In a \textbf{Direct Proof}, you assume the \textbf{antecedent} is true,
+and prove the \textbf{consequent}.A
+
+\textbf{Proof by Contraposition}: \$ A \implies B \$. Assume \$ \lnot B
+\$. Prove \(A\).
+
+\textbf{Proof by Case (Proof by Exhaustion)}: {[}give formal def{]}
+
+\textbf{Proof by Contradiction}: We want to prove \(A\). Assume
+\(\lnot A\), and show that this causes a Contradiction.
+
+\subsection{Induction}\label{induction}
+
+Giving this its own section cus its so big. Note that induction is a
+form of Deductive Reasoning, so what we're doing here is not to be
+confused with other uses of the term.
+
+\textbf{Base Case}: \(n=1\) case is true
+
+\textbf{Inductive Hypothesis}: Assume it's true for previous step
+\(n \leq k\), show \(k + 1\) is true.
+
+Conclusion: Every \(n\) is true.
+
+{[}I'll def write more on this later. I'll need more experience on
+Induction proofs in practice.{]}
+
+{[}Also I think Induction itself depends on some set theory stuff like
+the successor function or the well ordering principle or somethin..
+understand dat chain of logic. ``..err, successor is not an axiom, it is
+built up with von neumann ordinals. but would like to reduce this from
+successor to sets in explanation.{]}
+
+\subsection{Fitch Style Proof of Squeeze
+Theorem}\label{fitch-style-proof-of-squeeze-theorem}
+
+My overly formal and yet unlabeled proof of Squeeze Theorem
+
+\[
+\def\fitch#1#2{~~\begin{array}{|l} #1 \\ \hline #2 \end{array}}
+\fitch{
+    \forall \epsilon > 0 ~\exists \delta_1 > 0 ~\forall x[|x-c| < \delta_1 \rightarrow |f(x)-L| < \epsilon] \\
+    \forall \epsilon > 0 ~\exists \delta_2 > 0 ~\forall x[|x-c| < \delta_2 \rightarrow |h(x)-L| < \epsilon] \\
+    \forall \epsilon > 0 ~\exists \delta_3 > 0 ~\forall x[|x-c| < \delta_3 \rightarrow f(x) \leq g(x) \leq h(x)]}{
+    \fitch{
+        \epsilon > 0, x \in \mathbb{R}}{
+        \fitch{
+            \delta_1 > 0}{
+            \begin{aligned}
+            |x - c| < \delta_1 &\rightarrow |f(x) - L| < \epsilon \\
+            \dots &\rightarrow -\epsilon < f(x) - L < \epsilon \\
+            \end{aligned}
+        } \\
+        \fitch{
+            \delta_2 >0}{
+            \begin{aligned}
+            |x - c| < \delta_2 &\rightarrow |h(x) - L| < \epsilon \\
+            \dots &\rightarrow -\epsilon < h(x) - L < \epsilon \\
+            \end{aligned}
+        } \\
+        \fitch{
+            \delta_3 >0}{
+            \begin{aligned}
+            |x - c| < \delta_3 &\rightarrow f(x) \leq g(x) \leq h(x) \\
+            \dots &\rightarrow f(x) - L \leq g(x) -L \leq h(x) -L \\
+            \end{aligned}
+        } \\
+        \delta := \min(D := \{\delta_1, \delta_2, \delta_3\}) \\
+        \forall \delta_{i} \in D ~(\delta > 0 \rightarrow \delta_{i} > 0) \land (|x-c| < \delta \rightarrow |x-c| < \delta_{i}) \\
+        \fitch{
+            \delta > 0}{
+                \begin{aligned}
+                |x - c| < \delta \rightarrow& -\epsilon < f(x) - L < \epsilon, \\
+                &-\epsilon < h(x) - L < \epsilon, \\
+                &f(x) -L \leq g(x) - L \leq h(x) -L \\
+                \dots \rightarrow& -\epsilon<g(x)-L<\epsilon
+                \end{aligned}
+        }
+    } \\
+    \forall \epsilon > 0 ~\exists \delta > 0 \forall x[|x-c| < \delta \rightarrow |g(x) - L| < \epsilon] \\
+    \lim\limits_{x\to c} g(x) = L
+}
+\]
+
+\end{document}

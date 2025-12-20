@@ -1,0 +1,978 @@
+\documentclass[11pt]{article}
+\usepackage{math-notes-preamble}
+
+\title{CalcDiff}
+
+\begin{document}
+\maketitle
+
+\section{Limits}\label{limits}
+
+Limit exists if limits from both sides exist:
+
+\[
+\lim_{x\to{a}}f(x) \text{ exists if} \lim_{x\to{a^-}}f(x) = \lim_{x\to{a^+}}f(x) 
+\]
+
+\(0/0\) is \emph{indeterminate} meaning infinite solutions.
+Indeterminate may turn out to be tractable, undefined cannot be.
+
+Keep in mind that when you rearrange a limit equation, you don't remove
+the discontinuity at the point when you remove the 0 denominator through
+cancelling out.. It's still undefined at that point.
+
+    \subsection{Epsilon Delta Definition of a
+Limit}\label{epsilon-delta-definition-of-a-limit}
+
+Suppose that we have a function \$ f: \mathbb{R} \rightarrow \mathbb{R}
+\$, and c, L \(\in \mathbb{R}\). Then the limit
+\[ \lim_{x\to c}f(x) = L \]
+
+means for any real \(\epsilon > 0\), there exists a \(\delta > 0\) such
+that for any real \(x\), \(0 < |x - c|< \delta\) implies
+\(|f(x) - L|<\epsilon\). Or in pure logic:
+
+\[
+\forall \epsilon \in \mathbb{R} > 0 ~\exists \delta \in \mathbb{R} > 0[\forall x \in \mathbb{R} ~0 < |x-c| < \delta \rightarrow |f(x) - L| < \epsilon]
+\]
+
+    \subsubsection{Epsilon Delta Definition of One-Sided
+Limits}\label{epsilon-delta-definition-of-one-sided-limits}
+
+The limit from the left, \[
+\lim_{x\to{c^-}}f(x) = L
+\] means for any real \(\epsilon > 0\), there exists a \(\delta > 0\)
+such that for any real \(x\), \(0 < (c - x)< \delta\) implies
+\(|f(x) - L|< \epsilon\).
+
+The limit from the right, \[
+\lim_{x\to{c^+}}f(x) = L
+\] means for any real \(\epsilon > 0\), there exists a \(\delta > 0\)
+such that for any real \(x\), \$ 0 \textless{} (x - c)\textless{}
+\delta\$ implies \(|f(x) - L|< \epsilon\).
+
+    \subsection{Limit Properties}\label{limit-properties}
+
+Assume \(\lim \limits_{x \to a} f(x) = K\) and
+\(\lim \limits_{x \to a} g( x ) = L\).
+
+\textbf{Constant Function Property}:
+
+\[ \lim_{x\to a}[c] = c \]
+
+\textbf{Constant Multiple Property}:
+
+\[ \lim_{x\to a}[cf(x)] = c\lim_{x\to a}f(x) =cK \]
+
+\textbf{Limit Sum Property}:
+
+\[ \lim_{x\to a}[f(x) + g(x)] = \lim_{x\to a}f(x) + \lim_{x\to a}g(x) = K + L \]
+
+\textbf{Limit Product Property}:
+
+\[ \lim_{x\to a}[f(x)\cdot g(x)] = \lim_{x\to a}f(x) \cdot \lim_{x\to a}g(x) = KL \]
+
+\textbf{Limit Quotient Property}:
+
+\[ \lim_{x\to a}\frac{f(x)}{g(x)} = \frac{\lim\limits_{x\to a}f(x)}{\lim\limits_{x\to a}g(x)} = \frac{K}{L} \quad\text {provided $L=\lim\limits_{x\to a}g(x) \neq 0$} \]
+
+\textbf{Limit Exponent Property}:
+
+\[ \lim_{x\to a}[f(x)]^n = [\lim_{x\to a}f(x)]^n = K^n \quad\text{where $n \in \mathbb{R}$}\]
+
+\textsuperscript{} Basically all of these properties act in the way we'd
+naturally want/expect.
+
+In my notebooks, I proved these with epsilon delta using
+\href{https://tutorial.math.lamar.edu/classes/calci/limitproofs.aspx}{this
+resource} as a guide. Note that it only proves the exponent property is
+only proven for natural numbers.
+
+Note that a composite limit might exist even if its constituents don't
+after applying properties above.
+
+    \subsection{Limit of Composite
+function}\label{limit-of-composite-function}
+
+If \$ \lim\_\{x\to a\}g(x) \$ exists and \(f\) is continuous at \(g\)
+
+\[
+\lim_{x\to a} f(g(x)) = f(\lim_{x\to a}g(x))
+\]
+
+Make sure to check those conditions are met.
+
+Finally wrapped by head around the proof with this
+https://youtu.be/xH5PlQRzLmw . You replace one of the epsilons with the
+delta from the other, so you setup a chain of logical implication.
+
+    \subsection{Strategy for Limits}\label{strategy-for-limits}
+
+\begin{itemize}
+\tightlist
+\item
+  Solve at the point f(x) if you can
+\item
+  Only continue if it's indeterminate. If it's b/0 and b isn't 0, proly
+  not worth continuing.
+\item
+  Solve indeterminate with either factoring, or multiplying by
+  conjugate, or by trig substitution.
+\end{itemize}
+
+Using trig idenitties can allow you to express multiple parts as
+something simpler, e.g.~using Pythagorean Trig limit you can get
+\(\cos^2\) or \(\sin^2\) in terms of each other. Basically the strategy
+here as elsewhere in algebra is to generate cancellable (which often,
+but not always means similar) terms.
+
+There's more complex strategy to follows, as we haven't dealt with some
+special values yet, or even broached differentiation. Will likely update
+this section later.
+
+This summarizes this basic view:
+https://www.youtube.com/watch?v=ZaLw1cunN3s
+
+    \subsection{The Squeeze Theorem}\label{the-squeeze-theorem}
+
+Aka the Sandwich Theorem.
+
+\textbf{Squeeze Theorem}: Suppose that \[ f(x) \leq g(x) \leq h(x)\] for
+all \(x\) in some interval around \(c\), with the possible exclusion of
+\(c\) itself. Also suppose that
+\[ \lim_{x\to c} f(x) = L = \lim_{x\to c} h(x). \] Then
+\[\lim_{x\to c} g(x) = L.\]
+
+\emph{Proof}: We want to prove \(\lim\limits_{x\to c} g(x) = L\) given
+the premises above it. Let \(\epsilon\) be any real number more than
+\(0\), and let \(x\) be any real number. By the definition of a limit,
+
+\[ \lim_{x\to c}f(x) = L\]
+
+means there exists a a \(\delta_f\) such that,
+
+ 
+\begin{align}
+0 < |x-c| < \delta_f &\rightarrow |f(x) - L| < \epsilon  \\
+0 < |x-c| < \delta_f &\rightarrow -\epsilon < f(x) - L < \epsilon. \tag{1}
+\end{align}
+
+And
+
+\[ \lim_{x\to c}h(x) = L\]
+
+means there exists a a \(\delta_h\) such that,
+
+\begin{align}
+0 < |x-c| < \delta_h &\rightarrow |h(x) - L| < \epsilon \\
+0 < |x-c| < \delta_h &\rightarrow -\epsilon < h(x) - L < \epsilon. \tag{2}
+\end{align}
+
+The open interval around \(c\), with the possible exclusion of \(c\)
+itself, can be described with some \(\delta_g\), such that
+
+ 
+\begin{align}
+0 < |x-c| < \delta_g &\rightarrow f(x) \leq g(x) \leq h(x) \\
+0 < |x-c| < \delta_g &\rightarrow f(x) - L \leq g(x) - L \leq h(x) - L. \tag{3}\\
+\end{align}
+
+Let \(\delta\) be the minimum of \(\delta_f\), \(\delta_h\), and
+\(\delta_g\). Then by the transitivity of inequality, we can substitute
+\(\delta\) in for the previous deltas in (1), (2), and (3). So with our
+\(\delta > 0\) we have:
+
+\[
+\begin{aligned}
+0 <|x-c| < \delta \rightarrow& -\epsilon < f(x) - L < \epsilon, \\
+& -\epsilon < h(x) - L < \epsilon, \\
+& f(x) - L \leq g(x) - L \leq h(x) - L \\
+0 < |x-c| < \delta \rightarrow& -\epsilon < g(x) - L < \epsilon
+\end{aligned}
+\]
+
+So by the definition of a limit:
+
+\[ \lim_{x\to c} g(x) = L. \]
+
+    \subsubsection{Tricky Trig Squeeze
+Proofs}\label{tricky-trig-squeeze-proofs}
+
+\[ \lim_{\theta\to 0} \frac{\sin{\theta}}{\theta} = 1\]
+
+\emph{Proof}: We
+\href{https://i.stack.imgur.com/UdlyK.gif}{geometrically see} that while
+we're in the first quadrant (\$ 0 \textless{} x \textless{}
+\frac{\pi}{2} \$):
+
+\[ 
+\frac{|\sin{\theta}|}{2} \leq \frac{|\theta|}{2} \leq \frac{|\tan{\theta}|}{2}. 
+\]
+
+so from that we get:
+
+\[
+\begin{aligned}
+|\sin{\theta}| \leq |\theta| \leq |\tan{\theta}| \\
+|\sin{\theta}| \leq |\theta| \leq \frac{|\sin{\theta|}}{|\cos{\theta}|}  \\
+1 \leq \frac{|\theta|}{|\sin{\theta}|} \leq \frac{1}{|\cos{\theta}|} \\
+1 \geq \frac{|\sin{\theta}|}{|\theta|} \geq |\cos{\theta}| \\
+1 \geq \frac{\sin{\theta}}{\theta} \geq \cos{\theta} \quad\text{Signs don't matter for 1st and 4th unit circle quadrants} \\
+\end{aligned}
+\]
+
+Then by the Squeeze Theorem:
+
+\[
+\begin{aligned}
+\lim_{\theta\to 0}1 \geq \lim_{\theta\to 0}\frac{\sin{\theta}}{\theta} \geq \lim_{\theta\to 0}\cos{\theta} \\
+1 \geq \lim_{\theta\to 0}\frac{\sin{\theta}}{\theta} \geq 1
+\end{aligned}
+\]
+
+(Note: I will eventually give a more rigorous explanation once I move
+into differential/taylor series definition of trig functions).
+
+Now how about:
+
+\[
+\lim_{\theta\to 0} \frac{1 - \cos{\theta}}{\theta} = 0
+\]
+
+We can prove that as follows:
+
+\[
+\begin{aligned}
+\frac{1 - \cos{\theta}}{\theta} \\
+(\frac{1 - \cos{\theta}}{\theta})(\frac{1 + \cos{\theta}}{1 + \cos{\theta}}) \\
+\frac{1 - \cos^2}{(\theta)(1 + \cos{\theta})} \\
+\frac{\sin^2{\theta}}{(\theta)(1 + \cos{\theta})} \\
+(\frac{\sin{\theta}}{\theta})(\frac{\sin{\theta}}{1 + \cos{\theta}}) \\
+\end{aligned}
+\]
+
+Then we take the limit by the product rule:
+
+\$\$
+
+\begin{aligned}
+(\lim_{\theta\to 0} \frac{\sin{\theta}}{\theta}) (\lim_{\theta\to 0} \frac{\sin{\theta}}{1 + \cos{\theta}}) \\
+(1)(0/2) \\
+0 \\
+
+\end{aligned}
+
+\$\$
+
+    \subsection{Trig Limits}\label{trig-limits}
+
+\[
+\lim_{x\to 0}\frac{\sin{x}}{x} = 1 \\
+\lim_{x\to 0}\frac{1 - \cos{x}}{x} = 0 \\
+\]
+
+These are proved using the Squeeze Theorem, I followed along with the
+Khan proofs on that. These limits are necessary for proving the
+derivatives of Trig functions.
+
+    \subsection{Limits at Infinity}\label{limits-at-infinity}
+
+\subsubsection{Vertical Asymptotes}\label{vertical-asymptotes}
+
+\[
+\lim_{x\to a}f(x) = \infty
+\]
+
+means
+
+\[
+\forall M>0 ~\exists \delta > 0 ~\forall x: \\
+0 < |x - a| < \delta \rightarrow f(x) > M
+\]
+
+\[
+\lim_{x\to a}f(x) = -\infty
+\]
+
+means
+
+\[
+\forall N<0 ~\exists \delta > 0 ~\forall x: \\
+0 < |x - a| < \delta \rightarrow f(x) < N
+\]
+
+\subsubsection{Horizontal Asymptotes}\label{horizontal-asymptotes}
+
+\[
+\lim_{x\to \infty}f(x) = L
+\]
+
+means
+
+\[
+\forall \epsilon>0 ~\exists M > 0 ~\forall x: \\
+x > M \rightarrow |f(x) - L| < \epsilon
+\]
+
+\[
+\lim_{x\to -\infty}f(x) = L
+\]
+
+means
+
+\[
+\forall \epsilon>0 ~\exists M < 0 ~\forall x: \\
+x < M \rightarrow |f(x) - L| < \epsilon
+\]
+
+\[
+\lim_{x\to \infty}f(x) = \infty
+\]
+
+means \[
+\forall N>0 ~\exists M > 0 ~\forall x: \\
+x > M \rightarrow f(x) > N
+\]
+
+    \subsubsection{Biggest Term Wins in an Infinite
+Limit}\label{biggest-term-wins-in-an-infinite-limit}
+
+If \(p(x)=a_nx^n+a_{n−1}x^{n−1}+\dots a_1x +a_0\) is a polynomial of
+degree n (i.e.~\(a_n \ne 0\)) then,
+
+\[
+\lim_{x\to \infty}p(x)= \lim_{x\to \infty}a_nx^n
+\]
+
+and
+
+\[
+\lim_{x\to -\infty}p(x)= \lim_{x\to -\infty}a_nx^n
+\]
+
+    \section{Continuity}\label{continuity}
+
+In limit terms, \(f\) is continuous at \(c\) if:
+
+\[\lim_{x \to c}f(x) = f(c)\]
+
+\(f\) is continuous at \(x=c\) if:
+
+\[\forall \epsilon > 0 ~\exists \delta > 0: \forall x[|x-c < \delta \rightarrow |f(x) - f(c)| < \epsilon] \]
+
+Note that this requires \(f(c)\) to exist.
+
+Types of Discontinuities: - Point/Removable - Jump Discontinuity -
+Asymptotic Discontinuity
+
+\(f\) is continuous over an interval \([a, b]\), if it is continuous at
+very point in the interval:
+
+\[\forall c \in [a,b] ~\forall \epsilon > 0 ~\exists \delta > 0: \forall x[|x-c < \delta \rightarrow |f(x) - f(c)| < \epsilon] \]
+
+    \section{Limit Chain Rule}\label{limit-chain-rule}
+
+This is a huge one, because like any other chain rule, you can build up
+a huge number of things with f(g(x)). It's basically telling you when
+you can do substitution in this context.
+
+Going to state two forms of the rule, the simpler / more powerful one
+with continuity, and the more general but less powerful w/o continuity
+one.
+
+\subsection{Limit Chain Rule with
+Continuity}\label{limit-chain-rule-with-continuity}
+
+If
+
+\[
+\lim_{x\to b}f(x) = f(b), \lim_{x\to a}g(x) = b
+\]
+
+Then
+
+\[
+\lim_{x\to a}f(g(x)) = f(b)
+\]
+
+\subsection{General Limit Chain Rule}\label{general-limit-chain-rule}
+
+If
+
+\[
+\lim_{x\to b}f(x) = c, \lim_{x\to a}g(x) = b
+\]
+
+And one of these conditions is true: 1. \(f\) is continuous at \(x=b\)
+like above, OR 2. \(g\) does not take the value \(b\) near \(a\)
+i.e.~\(\Delta > 0:\)
+
+\[
+0 < |x-a| < \Delta \Rightarrow |g(x) - b| > 0
+\]
+
+Then
+
+\[
+\lim_{x\to a}f(g(x)) = c
+\]
+
+\subsubsection{Examples}\label{examples}
+
+\[
+f(x) = g(x)
+\begin{cases}
+0 ~&\text{ if }~ x \ne 0 \\
+1 ~&\text{ if }~ x = 0
+\end{cases}
+\]
+
+This one fails to satisfy the rule, so applying the rule gives the wrong
+answer (0 instead of 1).
+
+\[
+f(x)
+\begin{cases}
+x ~&\text{ if }~ x \ne 1 \\
+0 ~&\text{ if }~ x = 1
+\end{cases} \\
+g(x) = x \\
+\]
+
+In this case, \(f(x)\) is not continuous at \(1\), but the rule works
+because the 2nd condition holds.
+
+Consider inner function
+
+\[
+g(x) = 
+\begin{cases}
+\frac{x}{\sin(\frac{1}{x})} ~&\text{ if }~ x \ne 0 \\
+0 ~&\text{ if }~ x = 0
+\end{cases} \\
+\]
+
+If you're dealing with this \(g(x)\), then you have a pretty fascinating
+function that breaks the 2nd condition despite being continuous and not
+having any horizontal line in it.
+
+\subsubsection{Proofs}\label{proofs}
+
+The continuity one is proven on
+\href{https://tutorial.math.lamar.edu/classes/calci/limitproofs.aspx}{lamar.edu}.
+The more general one is proven on
+\href{https://proofwiki.org/wiki/Limit_of_Composite_Function}{proofwiki}.
+
+    \section{Existence Theorems}\label{existence-theorems}
+
+All of these require some analysis to prove in a smooth way. So I'm just
+gonna state them and relevant nuances here.
+
+\subsection{Intermediate Value
+Theorem}\label{intermediate-value-theorem}
+
+If \(f\) is a continuous function whose domain contains the interval
+\([a, b]\), then it takes on any given value between \(f(a)\) and
+\(f(b)\) at some point within the interval.
+
+``The theorem depends on, and is equivalent to, the completeness of the
+real numbers.'' -
+https://en.wikipedia.org/wiki/Intermediate\_value\_theorem
+
+\subsection{Mean Value Theorem}\label{mean-value-theorem}
+
+If
+
+\begin{itemize}
+\tightlist
+\item
+  \(f\) is continuous over the \emph{closed interval} \([a,b]\), and
+\item
+  Differentiable on the \emph{open interval} \((a,b)\)
+\end{itemize}
+
+Then at some point the average rate of change (secant) must be equal to
+the instantaneous rate of change (tangent):
+
+\[\frac{f(b) - f(a)}{b-a} = f'(c)\]
+
+\subsection{Extreme Value Theorem}\label{extreme-value-theorem}
+
+If \(f\) is continuous on \([a, b]\),
+
+\[\exists c,d \in [a,b]: f(c) \leq f(x) \leq f(d) \forall x \in [a,b]\]
+
+Note that without continuity, you cannot get an exact max value or min
+value. Continuity is necessary but not sufficient for a global min/max..
+
+    \section{\texorpdfstring{Defining \(e\)}{Defining e}}\label{defining-e}
+
+\[ 
+\lim_{n\to \infty} (1 + \frac{1}{n})^n
+\]
+
+or alternately
+
+\[
+\lim_{n\to 0} (1 + n)^\frac{1}{n}
+\]
+
+    \section{Differentiation}\label{differentiation}
+
+Differential calculus is all about instantaneous rate of change.
+\textbf{Secant} lines give you average rate of change at an interval, as
+opposed to \textbf{Tangent} line giving you instantaneous rate of
+change.
+
+\textbf{Differentials} are things like \(\Delta x\) (change in variable)
+or \(\Delta y\) (change in value, which can be labeled \(dx\), \(dy\).
+So we have \(\frac{dy}{dx}\) meaning the derivative, i.e.~the ratio
+between change in value and change in variable.
+
+Notation wise I will use both \(f'(x)\) and \(\frac{d}{dx}\).
+\(\frac{dy}{dx}\) is used when you have a value \(y\), but you'd put
+\(\frac{d}{dx}\) before the actual function.
+\href{https://www.reddit.com/r/learnmath/comments/bjlyjw/whats_the_difference_between_ddx_and_dydx/}{Reddit
+Thread}.
+
+\subsection{Definition of a
+Derivative}\label{definition-of-a-derivative}
+
+So for getting instantaneous change (the \textbf{Derivative}) we want:
+
+\[
+\lim_{\Delta x\to 0}\frac{\Delta y}{\Delta x}
+\]
+
+which leads to our definitions of derivative as a function of \(x\) and
+at a specific point..
+
+\subsection{Definition as a function of
+x}\label{definition-as-a-function-of-x}
+
+\[ f'(x) = \lim_{\Delta x\to0} \frac{f(x + \Delta x) - f(x)}{\Delta x} \]
+
+Formal Definition:
+
+\[\forall \epsilon > 0 ~\exists \delta > 0 \;\forall \Delta x: \\
+0<|\Delta x| < \delta \implies \left|\frac{f(x + \Delta x) - f(x)}{\Delta x}-L\right| < \epsilon\]
+
+\subsection{Definition at a specific
+point}\label{definition-at-a-specific-point}
+
+\[ f'(c) = \lim_{x\to c} \frac{f(x) - f(c)}{x - c} \]
+
+Or alternately:
+
+\[ f'(c) = \lim_{h \to0} \frac{f(c + h) - f(c)}{h} \]
+
+Formal Definition:
+
+\[
+\forall \epsilon > 0 ~\exists \delta > 0 \forall x: \\
+0 < |x-c| < \delta \rightarrow |\frac{f(x)-f(c)}{x-c} - L| < \epsilon
+\]
+
+\subsection{Differentiability (at a specific
+point)}\label{differentiability-at-a-specific-point}
+
+Differentiability just means the limit in the definition of a derative
+exists at a point.
+
+Continuity at a point means \[ \lim_{x\to c}f(x) = f(c) \]
+
+Continuity is necessary, but not sufficient for differentiability.
+Differentiability at a point requires that the limit works from both
+left and right of c.
+
+Proof that differentiability requires continuity. Assume
+differentiability and:
+
+ 
+\begin{align*}
+& \lim_{x\to c}f(x) - f(c) \\
+& \lim_{x\to c} \frac{(x-c)(f(x) -f(c))}{(x-c)} \\
+& \lim_{x\to c} (x-c) \lim_{x\to c} \frac{(f(x) -f(c))}{(x-c)} \quad\text {Limit assumed to exist} \\
+& (0)\lim_{x\to c} \frac{(f(x) -f(c))}{(x-c)} \\
+& \lim_{x\to c}(f(x) - f(c)) = 0 \\ 
+& \lim_{x\to c}f(x) - \lim_{x\to c}f(c) = 0 \\
+& \lim_{x\to c}f(x) - f(c) = 0 \\
+& \lim_{x\to c}f(x) = f(c)
+\end{align*} 
+
+Graphically, differentiability means that the tangent lines from left
+and right approach the same tangent line. So if there is a corner or a
+cusp at a point it is not differentiable there. Also, if there's a
+vertical tangent, it's not differentiable since that would be infinite
+slope.
+
+    \subsection{Derivatives of Trig
+Functions}\label{derivatives-of-trig-functions}
+
+I followed
+\href{https://www.khanacademy.org/math/ap-calculus-bc/bc-differentiation-1-new/bc-2-7/a/proving-the-derivatives-of-sinx-and-cosx?modal=1}{Khan
+Academy proofs for these} in my notebook. See above for the prerequisite
+limits proved by Squeeze Theorem used to prove these. And see Trig
+Notebook for pre-req identities, unit circle, etc.
+
+The derivative of \(tan(x)\) can be solved using the quotient rule and
+pythagorean trig identity:
+
+\[
+\frac{d}{dx}\frac{\sin{x}}{\cos{x}} = \frac{\cos^2{x} + \sin^2{x}}{\cos^2{x}} = \frac{1}{\cos^2{x}} = \sec^2{x}
+\]
+
+\subsubsection{Derivatives of Inverse Trig
+Functions}\label{derivatives-of-inverse-trig-functions}
+
+You get these by applying the inverse function rule (derived from the
+chain rule), but here they are for reference:
+
+\[
+\frac{d}{dx}\arcsin{x} = \frac{1}{\sqrt{1 - x^2}} \quad\text{$x \ne \pm 1$} \\
+\frac{d}{dx}\arccos{x} = \frac{-1}{\sqrt{1 - x^2}} \quad\text{$x \ne \pm 1$} \\
+\frac{d}{dx}\arctan{x} = \frac{1}{1 + x^2} \\
+\]
+
+More general forms are useful for these too:
+
+\[\frac{d}{dx}\arcsin\left(\frac{x}{k}\right) = \frac{1}{\sqrt{k^2 - x^2}}\]
+\[\frac{d}{dx}\frac{1}{k}\arctan\left( \frac{x + h}{k} \right) = \frac{1}{(x + h)^2 + k^2}\]
+
+\subsubsection{Derivatives of Reciprocal Trig
+Functions}\label{derivatives-of-reciprocal-trig-functions}
+
+\[
+\frac{d}{dx}\sec{x} = \tan{x}\sec{x} \\
+\frac{d}{dx}\csc{x} = -\cot{x}\csc{x} \\
+\frac{d}{dx}\cot{x} = -\frac{1}{\sin^2{x}} = -\csc^2{x} \\
+\]
+
+    \subsection{\texorpdfstring{Derivative of \(e^x\) and
+\(ln(x)\)}{Derivative of e\^{}x and ln(x)}}\label{derivative-of-ex-and-lnx}
+
+\[\frac{d}{dx}e^x = e^x \]
+
+I followed along with this
+\href{https://www.khanacademy.org/math/ap-calculus-bc/bc-differentiation-1-new/bc-2-7/a/proof-the-derivative-of-is?modal=1}{limit
+based proof from Khan} in my notebook.
+
+\[\frac{d}{dx}\ln(x) = \frac{1}{x} \]
+
+\href{https://www.khanacademy.org/math/ap-calculus-bc/bc-differentiation-1-new/bc-2-7/a/proof-the-derivative-of-lnx-is-1x?modal=1}{This
+proof on Khan} is much faster using Implicit Differentiation.
+
+\subsection{Derivative Notation}\label{derivative-notation}
+
+\href{https://en.wikipedia.org/wiki/Notation_for_differentiation}{Article
+on Wiki}
+
+\subsubsection{Leibniz Notation}\label{leibniz-notation}
+
+\[y = f(x)\]
+
+Derivative of y is given by
+
+\[\frac{dy}{dx}\]
+
+Second derivative given by
+
+\[\frac{d^2y}{dx^2}\]
+
+    \section{Derivative Properties}\label{derivative-properties}
+
+Proofs via
+\href{https://tutorial.math.lamar.edu/classes/calci/DerivativeProofs.aspx}{Lamar}.
+
+\subsection{Basic Properties}\label{basic-properties}
+
+\textbf{Sum/Difference of Two Functions}: \[
+(f(x) \pm g(x))' = f'(x) \pm g'(x)
+\]
+
+\textbf{Constant Times a Function}: \[
+(cf(x))'=cf'(x)
+\]
+
+\textbf{Derivative of a Constant}: \[
+\frac{d}{dx}(c) = 0
+\]
+
+\subsection{Power Rule}\label{power-rule}
+
+\[ \frac{d}{dx}[x^n] = nx^{n-1} \]
+
+\subsubsection{Proof for positive n}\label{proof-for-positive-n}
+
+\begin{align*}
+& \frac{d}{dx}[x^n] \\
+& \lim_{\Delta x\to0} \frac{(x + \Delta x)^n - x^n}{\Delta x}  \quad\text {Definition of a Limit} \\
+& \lim_{\Delta x\to0} \frac{\sum\limits_{k=0}^{n}\binom{n}{k}x^{n-k}\Delta x^k) - x^n}{\Delta x}  \quad\text {Binomial Theorem} \\
+& \lim_{\Delta x\to0} \frac{\binom{n}{0}x^n \Delta x^0 + \sum\limits_{k=1}^{n}\binom{n}{k}x^{n-k}\Delta x^k) - x^n}{\Delta x} \\
+& \lim_{\Delta x\to0} \frac{\sum\limits_{k=1}^{n}\binom{n}{k}x^{n-k}\Delta x^k)}{\Delta x} \\
+& \lim_{\Delta x\to0} {\sum\limits_{k=1}^{n}\binom{n}{k}x^{n-k}\Delta x^{k-1})} \\
+& \lim_{\Delta x\to0} \binom{n}{1} x^{n-1}\Delta x^{1-1} + (0) \quad\text {delta x is 0 factor for k>1} \\
+& \lim_{\Delta x\to0} nx^{n-1} = nx^{n-1} \\
+\end{align*} 
+
+This proof does not cover non-positive integers, so actually want to use
+logarithmic differentiation instead. Proof is way easier and more
+complete:
+
+\[
+y = x^r \\
+\ln(y) = \ln(x^r) \\
+\ln(y) = r\ln(x) \\
+\frac{y'}{y} = \frac{r}{x} \\
+y' = \frac{yr}{x} = \frac{x^rr}{x} = rx^{r-1}
+\]
+
+\subsubsection{Proof for all n}\label{proof-for-all-n}
+
+\[
+y = x^n \\
+\ln(y) = \ln(x^n) \\
+\ln(y) = n\ln(x) \\
+\frac{d}{dx}\ln(y) = \frac{d}{dx} n\ln(x) \\
+\frac{y'}{y} = nx^{-1} \\
+y' = nx^{-1}
+\]
+
+The power of logarithmic differentation. But also
+\href{https://math.stackexchange.com/questions/4349120/solving-derivative-of-xx-without-logarithmic-differentiation}{check
+out this approach} with putting it in terms of \(e\).
+
+\subsection{Product Rule}\label{product-rule}
+
+\[
+\frac{d}{dx}f(x)g(x) = f'(x)g(x) + f(x)g'(x)
+\]
+
+I followed the
+\href{https://www.khanacademy.org/math/ap-calculus-bc/bc-differentiation-1-new/bc-2-8/a/proving-the-product-rule?modal=1}{limit
+based proof}, which features a clever substitution from Khan. But it's
+much simpler with Logarithmic Differentiation:
+
+\[
+y = f(x)g(x) \\
+\ln(y) = \ln(f(x)g(x)) \\
+\ln(y) = \ln(f(x)) + \ln(g(x)) \\
+\frac{y'}{y} = \frac{f'(x)}{f(x)} + \frac{g'(x)}{g(x)} \\
+y' = f(x)g(x)\left(\frac{f'(x)}{f(x)} + \frac{g'(x)}{g(x)}\right) \\
+y' = f'(x)g(x) + g'(x)f(x)
+\]
+
+\subsection{Quotient Rule}\label{quotient-rule}
+
+\[
+\frac{d}{dx}\frac{f(x)}{g(x)} = \frac{g(x)f'(x) - f(x)g'(x)}{g(x)^2} \quad\text{where g(x) != 0}
+\]
+
+This can be proven from the product rule combined with the chain rule.
+Or more simply with Logarithmic Differentiation:
+
+\[
+y = \frac{f(x)}{g(x)} \\
+\ln(y) = \ln(\frac{f(x)}{g(x)}) \\
+\ln(y) = \ln(f(x)) - \ln(g(x)) \\
+\frac{y'}{y} = \frac{f'(x)}{f(x)} - \frac{g'(x)}{g(x)} \\
+y' = \frac{f(x)}{g(x)}\left(\frac{f'(x)}{f(x)} - \frac{g'(x)}{g(x)}\right) \\
+y' = \frac{f'(x)g(x) - g'(x)f(x)}{g(x)^2}
+\]
+
+\subsection{Chain Rule}\label{chain-rule}
+
+If \(f(x)\) and \(g(x)\) are both differentiable functions and we define
+\(h(x)=f(g(x))\) then the derivative of h(x) is \[h'(x)=f'(g(x))g'(x)\]
+
+The chain rule proof is actually a bit tricky, there's a ``naive'' proof
+which doesn't protect from division by 0. You use a couple of piecewise
+functions to guarantee continuity and avoid this.
+
+\subsubsection{Derivative of inverse
+functions}\label{derivative-of-inverse-functions}
+
+This comes from the chain rule:
+
+\[
+f^{\prime}(x) = \frac{1}{f^{-1\prime}(f(x))}
+\]
+
+\subsubsection{\texorpdfstring{Derivative of \(a^x\) and
+\(\log_a{x}\)}{Derivative of a\^{}x and \textbackslash log\_a\{x\}}}\label{derivative-of-ax-and-log_ax}
+
+\[
+\frac{d}{dx}a^x = (ln(a))a^x
+\]
+
+This\^{} comes from rewriting \(a\) as \(e^{\ln{a}}\), and
+differentiating with the chain rule.
+
+\[
+\frac{d}{dx}\log_a{x} = \frac{1}{ln(a)x}
+\]
+
+This\^{} comes from the change of base formula.
+
+\subsubsection{Implicit differentiation}\label{implicit-differentiation}
+
+Basically just treat y like the function of x that it is, and you can
+apply the chain rule without rearranging y to be by itself.
+
+\section{Derivative Techniques}\label{derivative-techniques}
+
+\subsection{Logarithmic
+Differentiation}\label{logarithmic-differentiation}
+
+Taking derivatives of some functions can be simplified by using
+logarithms. This is called \textbf{logarithmic differentiation}, which
+is a combo of:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\ln\) both sides
+\item
+  simplify using log properties
+\item
+  implicit differentiation
+\end{itemize}
+
+The log properties can help with an ugly multiple product rule function,
+but there are also certain functions they work really well with of the
+form \(f(x)^{g(x)}\). Specifically check the proof of
+\(\frac{d}{dx}x^x\) above. Note that derivatives like this can also be
+solved by plugging in something like \(e^{\ln(x)}\). Basically the point
+is that getting things in terms of natural logs or the exponential
+function is really nice.
+
+Logarithmic differentiation allows for a complete proof of product rule
+for all \(n\), not just positive (see above), and simpler proofs of the
+product and quotient rules.
+
+\subsection{L'Hopital's Rule}\label{lhopitals-rule}
+
+Previously we solved derivatives using limits, now we're gonna do the
+reverse and solve limits with derivatives. Specifically, we will use it
+to solve derivatives of indeterminate forms.
+
+If
+\(\lim\limits_{x \to c}f(x) = \lim\limits_{x \to c}g(x) \in \{0, \pm \infty\}\)
+and \(\lim\limits_{x \to c}\frac{f'(x)}{g'(x)} = L\)
+
+Then \(\lim\limits_{x \to c}\frac{f(x)}{g(x)} = L\)
+
+Note that \(\frac{\infty}{-\infty}\) is allowed, and I'm pretty sure the
+above requirements let you use \(c = \pm \infty\), but definitely the
+strong version of L'Hopital's rule allow \textbf{extended real numbers}
+(\(\{\mathbb{R}, \pm \infty\}\)).
+
+The proof of this requires Analysis.. At which point it's also possible
+to state it somewhat more strongly, which I'll save for that context.
+The \(\frac{0}{0}\), with \(c\) being a real number is much simpler and
+done by Khan which I followed along with. The proper application of
+L'Hopital rule
+\href{https://math.stackexchange.com/questions/4354717/understanding-the-counterexamples-to-lhopitals-rule}{can
+be tricky}.
+
+You can usually find a clever way to apply L'Hopital's rule on
+non-fractional indeterminate forms.. Here's a. example:
+
+\[ x\ln{x} = \frac{\ln{x}}{\frac{1}{x}} \]
+
+Other times it's a substitution, or multiplying by the right thing to
+get it in L'Hopital form.
+
+    \section{Applications of Derivatives}\label{applications-of-derivatives}
+
+\section{Linear Approximation}\label{linear-approximation}
+
+Allows us to handle equations like \(\sqrt{4.36}\) approximately.
+Basically using the tangent line to add an amount to a number you
+already know. In general, you can zoom in on diferentiable functions and
+they'll take on local linearity. If you zoom in and get a vertical line
+looking thing, you're dealing ith a vertical asymptote.
+
+\textbf{Equation for linear approximation}:
+
+\[ f(x) \approx f(a) + f'(a)(x-a) \]
+
+\subsection{Critical Points}\label{critical-points}
+
+Points where \(f(a)\) is defined and \(f'(a)\) is 0 or undefined are
+called \textbf{critical points}.
+
+Critical Points are necessary but not sufficient to be a local min or
+max.
+
+\subsection{Min and Max Values}\label{min-and-max-values}
+
+\textbf{Relative Maximum} and \textbf{Relative Minimum} are compared to
+their neighborhood of points.. Mathematical definition:
+
+\(f(c)\) is a relative max if:
+
+\[
+\exists ~h>0 \forall x \in (c-h, c+h): f(c) \geq f(x) 
+\]
+
+\(f(c)\) is a relative min if:
+
+\[
+\exists ~h>0 \forall x \in (c-h, c+h): f(c) \leq f(x) 
+\]
+
+Relative max and relative min are collectively called \textbf{relative
+extrema}.
+
+If \(f'(x)\) switches from positive to negative we are at a local max.
+If neg-\textgreater pos that's a local min.
+
+\textbf{Absolute extrema} are min or max of the whole domain, or the
+interval of the function being looked at. Finding absolute extrema on a
+closed interval, just find the relative extrema and consider the
+endpoints.
+
+Note that there maybe no specific absolute min or max values,
+e.g.~function could go to \(\pm \infty\) on each side.
+
+    \subsection{Concavity}\label{concavity}
+
+Here's a pic and good explanation
+https://tutorial.math.lamar.edu/Classes/CalcI/ShapeofGraphPtII.aspx
+
+Concave Down \(\rightarrow f''(x) < 0\)
+
+Concave Up \(\rightarrow f''(x) > 0\)
+
+Concave Down on a critical point means you have a Max. Concave Up on a
+critical points means you have a Min.
+
+\subsection{Inflection Points}\label{inflection-points}
+
+An inflection point is when concavity changes, i.e.~the sign of
+\(f''(x)\) changes. Visually, you can see this typically but could be
+subtle unless youzoom in. Inflection Point is approached the same as a
+min/max, but with an extra derivative: Points where \(f'(a)\) is defined
+and \(f''(a)\) is 0 are where we search for inflections.
+
+Minima/Maxima techniques are great for optimization problems. Most
+optimization problems involve finding critical points w/ \(f'(x)\) and
+checking inflections w/ \(f''(x)\) with\ldots{}
+
+\subsection{Second Derivative Test}\label{second-derivative-test}
+
+If \(f'(c) = 0\), \(f'\) exists in a neighborhood around \(x-c\) {[}have
+to learn analysis to properly parse this{]}, then:
+
+\begin{itemize}
+\tightlist
+\item
+  \$f'\,'(c)\textless0 \rightarrow \$ relative max value at \(x=c\).
+\item
+  \$f'\,'(c)=0 \rightarrow \$ inconclusive.
+\item
+  \$f'\,'(c)\textgreater0 \rightarrow \$ relative min value at \(x=c\).
+\end{itemize}
+
+\end{document}

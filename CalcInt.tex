@@ -1,0 +1,860 @@
+\documentclass[11pt]{article}
+\usepackage{math-notes-preamble}
+
+\title{CalcInt}
+
+\begin{document}
+\maketitle
+
+Finding areas under a curve has been developed since antiquity, but
+Integrals give us a calculus for it.
+
+\section{Accumulation of change}\label{accumulation-of-change}
+
+Whereas derivatives deal in rate of change, integrals are about
+accumulation of change. You integrate the rate of change to get the net
+change in that quantity.
+
+Note that integrals give the net change, not the quantity. It would
+depend on the starting value, which the integral wouldn't care about.
+
+    \section{Summation Properties}\label{summation-properties}
+
+Via
+\href{https://tutorial.math.lamar.edu/Classes/CalcI/SummationNotation.aspx}{Lamar}.
+
+\[
+\sum_{i=i_0}^{n} ca_i = c \sum_{i=i_0}^{n} a_i \quad\text{ where c is any number} \\
+\sum_{i=i_0}^{n} (a_i \pm b_i) = \sum_{i=i_0}^{n} a_i \pm \sum_{i=i_0}^{n} b_i \\
+\]
+
+Note that the following ones need to start at \(i=1\):
+
+\[
+\sum_{i=1}^{n} c = cn \\
+\sum_{i=1}^{n} i = \frac{n(n+1)}{2} \\
+\sum_{i=1}^{n} i^2 = \frac{n(n+1)(2n + 1)}{6} \\
+\sum_{i=1}^{n} i^3 = \left[\frac{n(n+1)}{2}\right]^2 \\
+\]
+
+    \section{Riemann Sums}\label{riemann-sums}
+
+To approximate the area under a curve over an interval, we can divide
+the interval into however many slice. The more slices, the more precise.
+With \textbf{Left Riemann Sums} and \textbf{Right Riemann Sums}, we pick
+the left or right side of each slice respectively.
+
+In terms of constructing a Riemann sum, your steps will be to:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Find \(\Delta x\). \$ \Delta x = \frac{b-a}{n} \$.
+\item
+  Find \(x_i\). If starting at \(a\), \(x_i = a + \Delta x_i\).
+\item
+  Plug in to formula with f, etc. {[}this is a bit hazy lol{]}
+\end{enumerate}
+
+\subsection{Formal definition of Riemann
+Sum}\label{formal-definition-of-riemann-sum}
+
+A \textbf{partition of an interval} \([a, b]\) is a finite sequence of
+numbers of the form\\
+\[a = x_0 < x_1 < x_2 < \dots < x_n = b\]
+
+Each \([x_i, x_{i + 1}]\) is called a \textbf{sub-interval} of the
+partition. The \textbf{mesh} or \textbf{norm} of a partition is defined
+to be the length of the longest sub-interval, ie
+
+\[\max \left(x_{i+1}-x_i\right), \quad i \in [0,n-1]\]
+
+A \textbf{tagged partition} \(P(x,t)\) of an interval \([a,b]\) is a
+partition together with a finite sequence of numbers
+\(t_0 \dots t_{n-1}\) subject to the conditions that for each \(i\),
+\(t_i \in [x_i, x_{i+1}]\). In other words it is a partition with an
+index for every sub-interval.
+
+Suppose that two partitions \(P(x, t)\) and \(Q(y, s)\) are both
+partitions of the interval \([a, b]\). We say that \(Q(y, s)\) is a
+\textbf{refinement} of \(P(x, t)\) if for each integer \(i\), with
+\(i \in [0, n]\), there exists an integer \(r(i)\) such that
+\(x_i = y_{r(i)}\) and such that \(t_i = s_j\) for some \(j\) with
+\(j \in [r(i), r(i + 1))\). Said more simply, a refinement of a tagged
+partition breaks up some of the sub-intervals and adds tags to the
+partition where necessary, thus it ``refines'' the accuracy of the
+partition.
+
+\subsection{Left and Right Riemann
+Sums}\label{left-and-right-riemann-sums}
+
+Left vs Right Riemann Sums will over and underestimate in different
+ways. If a function is decreasing, then we will overestimate with a Left
+Sum, and underestimate with a Right Sum. If it's increasing, it will be
+the reverse.
+
+\textbf{Left Riemann Sum}: \[
+\sum_{i=0}^{n-1} f(x_i) \Delta x 
+\]
+
+\textbf{Right Riemann Sum}: \[
+\sum_{i=1}^{n} f(x_i) \Delta x
+\]
+
+Riemann Sums are used to approximate areas. But if we take Riemann Sums
+with infinite rectangles of infinitely small width, we get the exact
+area, i.e.~the definite integral.
+
+\subsection{Midpoint and Trapezoid Riemann
+Sums}\label{midpoint-and-trapezoid-riemann-sums}
+
+\textbf{Midpoint Riemann Sum}
+
+\[
+\sum_{i=1}^{n} f\left(\frac{x_i + x_{i-1}}{2}\right) \Delta x
+\]
+
+or
+
+\[
+\sum_{i=0}^{n-1} f\left(\frac{x_i + x_{i+1}}{2}\right) \Delta x
+\]
+
+\textbf{Trapezoid Sum}
+
+\[
+\sum_{i=1}^{n} \frac{f(x_{i-1}) + f(x_i)}{2} \Delta x
+\]
+
+I read that Trapezoid approach technically isn't a Riemann sum, but it
+is a sum that helps us approximate area so whatev.
+
+    \section{Definite Integrals}\label{definite-integrals}
+
+Whereas we used derivatives to go from quantity \(f\) to rate \(f'\), we
+can use integrals to go from rate \(f\) to quantity \(F\). Covering
+definite integrals first, and indefinite after.. the order I learned on
+Khan.
+
+Couple names for parts of an integral: - \(a\) and \(b\) are the
+bounds/limits of integration/interval of integration. - The specific
+bounds could be referred to as the lower bound/limit and upper
+bound/limit. - The integrand is the \(f(x)\) being integrated.
+
+Geometrically, can think of definite area as the area under the curve
+over an interval.
+
+\subsection{Definition of Riemann
+Integral}\label{definition-of-riemann-integral}
+
+Given a function \(f(x)\) that is continuous on the interval \([a,b]\),
+we divide into \(n\) subintervals of equal width, \(\Delta x\), and from
+each interval choose a point \(x_i\). Then the definite integral of
+\(f(x)\) from \(a\) to \(b\) is :
+
+\[
+\int_{a}^{b} f(x)\, dx = \lim_{n\to \infty} \sum_{i=0}^{n-1} f(x_i) \Delta x_i 
+\]
+
+If the curve is below the x axis, it counts negative. Same with the
+values you get from moving backwards (more on that coming up soon).
+
+\subsection{Formal Definition of a Riemann
+Integral}\label{formal-definition-of-a-riemann-integral}
+
+From
+\href{https://en.wikipedia.org/wiki/Riemann_integral\#Definition}{Wiki}.
+The Riemann Integral of \(f\) equals \(s\) if:
+
+\begin{quote}
+For all \(\epsilon > 0\), there exists a \(\delta > 0\) such that for
+any tagged partition \(x_0 \dots x_n\) and \(t_0 \dots t_{n-1}\) whose
+mesh is less than \(\delta\) we have
+\[\left|  \left(\sum_{i=0}^{n} f(t_i) (x_{i+1}-x_{i})\right) - s \right| < \epsilon\]
+\end{quote}
+
+See
+\href{https://math.stackexchange.com/questions/4371734/when-would-we-want-to-use-uneven-subintervals-in-a-riemann-integral}{SO
+question on why support for non-uniform subintervals is a good thing},
+specifically the
+\href{https://en.wikipedia.org/wiki/Riemann_integral\#Similar_concepts}{point
+about restricting to equal intervals on wiki}.
+
+There's an apparently better version which is equivalent that they
+describe:
+
+\begin{quote}
+For all \(\epsilon > 0\), there exists a tagged partition
+\(y_0 \dots y_m\) and \(r_0 \dots r_{m−1}\) such that for any tagged
+partition \(x0 \dots x_n\) and \(t_0 \dots t_{n−1}\) which is a
+refinement of \(y_0 \dots y_m\) and \(r_0 \dots r_{m − 1}\), we have
+\[\left|  \left(\sum_{i=0}^{n} f(t_i) (x_{i+1}-x_{i})\right) - s \right| < \epsilon\]
+\end{quote}
+
+The equivalence between the first and the second is proven through
+\textbf{Darboux Integrals} which I'm not familiar with.
+
+\subsection{Definite Integral
+Properties}\label{definite-integral-properties}
+
+Properties from a combo of Khan and Lamar.
+\href{https://tutorial.math.lamar.edu/Classes/CalcI/ProofIntProp.aspx}{Proofs
+on Lamar}.
+
+\textbf{Integral Over a Single Point}:
+
+\[
+\int_{a}^{a} f(x)\, dx = 0
+\]
+
+\textbf{Integrating Scaled Version of a Function}: \[ 
+\int_{a}^{b} cf(x)\, dx = c \int_{a}^{b} f(x)\, dx 
+\]
+
+\textbf{Switching Bounds of Definite Integrals}: \[
+\int_{a}^{b} f(x)\, dx = -\int_{b}^{a} f(x)\, dx
+\]
+
+This makes sense from our Riemann sum here \$\Delta x = \frac{b-a}{n}
+
+\textbf{Integrating Sums of Functions}: \[
+\int_{a}^{b} f(x) \pm g(x) \, dx = \int_{a}^{b} f(x)\, dx \pm \int_{a}^{b} g(x)\, dx
+\]
+
+\textbf{Definite Integrals on Adjacent Intervals}: \[
+\int_{a}^{b} f(x)\, dx = \int_{a}^{c} f(x)\, dx \int_{c}^{b} f(x)\, dx
+\]
+
+This last one is just to remind that if just the variable name changes,
+the definite integral won't change:
+
+\[
+\int_{a}^{b} f(x)\, dx = \int_{a}^{b} f(t)\, dt
+\]
+
+There are some
+\href{https://tutorial.math.lamar.edu/Classes/CalcI/DefnofDefiniteIntegral.aspx}{more
+properties listed here} that could be useful if looking at
+inequalities/comparing sizes of integrals.
+
+    \section{Fundamental Theorem of
+Calculus}\label{fundamental-theorem-of-calculus}
+
+I followed through
+\href{https://tutorial.math.lamar.edu/Classes/CalcI/ProofIntProp.aspx}{Proofs
+on Lamar}. It relies on the Mean Value Theorem and the Squeeze Theorem.
+
+\subsection{Part 1}\label{part-1}
+
+If \(f(x)\) is continuous on \([a, b]\) then
+
+\[ F(x) = \int_{a}^{x}f(t)\, dt \]
+
+is continuous on \([a, b]\) and is differentiable on \((a, b)\) and:
+
+\[ F'(x) = f(x)\]
+
+\subsection{Part 2}\label{part-2}
+
+Suppose \(f(x)\) is a continuous function on \([a, b]\) and also suppose
+that \(F(x)\) is an anti-derivative of \(f(x)\). Then:
+
+\[ \int_{a}^{b}f(x)\, dx = F(x) |_a^b = F(b) - F(a)\]
+
+The derivative of such an integral is the integrand. Note there's no
+\textbf{constant of integration} in a definite integral because it
+cancels out when subtracting \(F(a)-F(b)\).
+
+    \section{Antiderivatives and Indefinite
+Integrals}\label{antiderivatives-and-indefinite-integrals}
+
+The indefinite integral is the anti-derivative. Constant of Integration
+is used because anything plus the constant could be the anti-derivative.
+
+\subsection{Antiderivative properties}\label{antiderivative-properties}
+
+\textbf{Antiderivative of Sum of Functions}: \[
+\int[f(x) + g(x)]\, dx = \int[f(x)]\, dx + \int[g(x)]\, dx 
+\]
+
+\textbf{Antiderivative of Scaled Function}: \[
+\int cf(x)\, dx = c\int f(x)\, dx
+\]
+
+\textbf{Reverse Power Rule}: Where \(n \ne -1\): \[
+\int x^n\, dx =  \frac{x^{n+1}}{n+1} + C
+\]
+
+\subsection{\texorpdfstring{Integral of
+\(\frac{1}{x}\)}{Integral of \textbackslash frac\{1\}\{x\}}}\label{integral-of-frac1x}
+
+Naively, we would just say: \[
+\int \frac{1}{x}\, dx =  \ln(x) + C
+\]
+
+But if we want an antiderivative for every x defined, we'd go with
+
+\[
+\int \frac{1}{x}\, dx = \ln(|x|) + C
+\]
+
+Explanation of this on my
+\href{https://math.stackexchange.com/questions/4358667/what-is-the-implicit-domain-of-an-integral/4359912\#4359912}{SO
+question}. Key point is this comment, explaining how function domains
+(independent of whether the function we're considering is integral,
+derivative, or whatever) bottleneck each other:
+
+\begin{quote}
+Any operation that you apply on a function and yielding another function
+has the intersection of the domains of the input and the output as a
+domain.
+\end{quote}
+
+\subsection{\texorpdfstring{Integrals of \(e^x\), \(ln(x)\), and
+\(a^x\)}{Integrals of e\^{}x, ln(x), and a\^{}x}}\label{integrals-of-ex-lnx-and-ax}
+
+\[
+\int e^x\, dx = e^x + C
+\]
+
+The integral of \(ln(x)\) is best found using Integration by Parts
+described later..
+
+\[
+\int \ln(x)\, dx = x\ln(x) - x + C
+\]
+
+\[
+\int a^x\, dx = \frac{a^x}{\ln(a)} + C
+\]
+
+    \subsection{Integrals of Trig
+Functions}\label{integrals-of-trig-functions}
+
+\[ \int \sin(x)\, dx = -\cos(x) + C \]
+
+\[ \int \cos(x)\, dx = \sin(x) + C \]
+
+\[ \int \tan(x)\, dx = -\ln|\cos(x)| + C\]
+
+\[ \int \csc(x)\, dx = -\ln|\csc(x) + \cot(x)| + C  \]
+
+\[ \int \sec(x)\, dx = \ln|\sec(x) + \tan(x)| + C  \]
+
+\[ \int \cot(x)\, dx = \ln|\sin(x)| + C  \]
+
+    \section{U-Substitution}\label{u-substitution}
+
+This is basically the chain rule in reverse.
+
+\[
+\int f(g(x)) g'(x) \, dx = \int f(u) \, du \quad\text{where $u=g(x)$}
+\]
+
+Since scalar factors can move easily in and out of integration, you can
+introduce or removes constant multiples to setup a U-sub.
+
+For functions featureing \(a^x\), you likely want to get it in terms of
+\(e^x\) before attempting u-substitution. Namely:
+\(a^x = (e^{\ln{a}})^x\). I think there's a similar thing going on with
+getting non-natural logs in terms of \(\ln\).
+
+Note that sometimes the way to solve a problem is to set the entire
+integrand to \(f\), and let \(g'\) be \(dx\). An example of this is
+\(\int \tan^{-1}(x) \, dx\).
+
+\subsection{U-Substitution On definite
+integrals}\label{u-substitution-on-definite-integrals}
+
+U-substitution on definite integrals requires you to update the bounds
+of integration, if you want to plug directly into the u integral.
+Otherwise you could get it back into an x integral and just use the
+original bounds. Both are equivalent, I think I prefer the latter while
+the former is regarded as a simpler calculation and I suppose I'd agree.
+
+    \section{Integrating Products of Trig
+Functions}\label{integrating-products-of-trig-functions}
+
+\subsection{Products of sin and cos}\label{products-of-sin-and-cos}
+
+We have some integral of the form
+
+\[\int \sin^n(x)\cos^m(x)~dx \]
+
+\begin{itemize}
+\tightlist
+\item
+  If the sine exponent \(n\) is odd, we can strip out one sine, and
+  convert the rest to cosines using the Pythagorean Trig Identity,
+  allowing a u-sub.
+\item
+  If the cosine exponent \(m\) is odd, we can strip out one cosine, and
+  convert the rest to sines.
+\item
+  We can use either approach when they're both odd, in which case it's
+  easier to strip/convert the one with the lower exponent.
+\end{itemize}
+
+But what if both are even? Then there's no standard method. Nonetheless
+these trig identities should generally do the trick
+
+\textbf{Half Angle Identities}:
+\[ \cos^2(x) = \frac{1}{2}(1 + \cos(2x)) \]
+\[ \sin^2(x) = \frac{1}{2}(1 - \cos(2x)) \]
+
+\textbf{Double Angel Identity}:
+\[ \sin(x)\cos(x) = \frac{1}{2}\sin(2x) \]
+
+Make use of Trig Identities (see trig notebook). For example if you had
+\(\int \sin^5{x}\) you can split off a \(\sin^2{x}\) to make use of the
+Pythagoren Trig Identity making u-sub possible.
+
+When the arguments of sine and/or cosine are different, we want to use
+one of the
+
+\textbf{Product to Sum Identities}:
+\[ \sin(a)\cos(b) = \frac{1}{2}(\sin(a-b) + \sin(a+b)) \]
+
+\[ \sin(a)\sin(b) = \frac{1}{2}(\cos(a-b) - \cos(a+b)) \]
+
+\[ \cos(a)\cos(b) = \frac{1}{2}(\cos(a-b) + \cos(a+b)) \]
+
+Often you'll have to apply multiple of these identities to solve a Trig
+Integral.
+
+\subsection{Products of sec and tan}\label{products-of-sec-and-tan}
+
+Taking the form of
+
+\[
+\int \sec^n(x)\tan^m(x)~dx
+\]
+
+Now here we have \textbf{Tan/Sec Pythagorean Identity}:
+\(\tan^2{\theta} + 1 = \sec^2{\theta}\).
+
+When using this identity to integrate, similar to previous one with sine
+and cosine, you want to separate things out so you can make the
+substitution. In this case the substitution would either be
+\(u=\tan(x)\) \(du=\sec^2(x)\) or \(u=\sec(x)\) \(du = \sec(x)\tan(x)\).
+
+\begin{itemize}
+\tightlist
+\item
+  If the exponent of the secant is even, we can strip out two secants,
+  and convert the remaining secants to tangents using the pythagorean
+  trig identity. We can then choose \(u=\tan(x)\), which will absorb the
+  two stripped secants with \(du\).
+\item
+  If the exponent on the tangent is odd, and we have at least one secant
+  in the integrand, we can strip out a \(\tan{x}\sec{x}\), and convert
+  the remaining tangents to secants using the pythagorean trig identity.
+  Then we can choose \(u=\sec{x}\), which will absorb the stripped
+  \(\tan{x}\sec{x}\) with \(du\).
+\item
+  If the secant is odd and the tangent is even, these forms may be
+  solvable by multiplying by the right fraction {[}I'm sure there's a
+  name for this operation{]}. Note that it's not always clear why the
+  the fraction that works, does work. Hence the trickiness. This form is
+  known for being especially clever, see the devoted wiki entry on
+  \href{https://en.wikipedia.org/wiki/Integral_of_secant_cubed}{Integral
+  of Secant Cubed}. The solution involves doing the integral subtracted
+  from itself thing.
+\item
+  When multiple choices are available, as with other trig integrals, it
+  will be easier to strip away the term with the smaller degree.
+\end{itemize}
+
+In some situations, we will have to get creative. One simple check worth
+doing is converting to sin/cos (every other trig function can be).
+That's how the relatively simple \(\int \tan(x)\) is solved. Note that
+as described above, for more complex cases, you can go to town with
+sin/cos identities to get it in workable forms.
+
+\subsection{Products of cot and csc}\label{products-of-cot-and-csc}
+
+Taking the form of
+
+\[
+\int \cot^n(x)\sec^m(x)~dx
+\]
+
+We can take the same approach on these as to sec/tan integrals, but
+using the \textbf{Cot/Csc Pythogrean Identity}
+\(\cot^2{\theta} + 1 = \csc^2{\theta}\). Our techniques will involve
+applying \(u=\cot(x)\) \(du=-\csc^2(x)\) or else \(u=\csc(x)\)
+\(du=-\csc(x)\cot(x)\).
+
+    \section{Using Polynomial Long Division and Partial Fractions on
+Integrals}\label{using-polynomial-long-division-and-partial-fractions-on-integrals}
+
+When you have a rational function with the same polynomial degree in the
+numerator and denominator, it's a good candidate for busting out the
+long division, and possibly even the partial fractions. (Note: Algebra
+notebook covers how to apply these techniques on polynomials).
+
+These techniques can make u-substitution easier by simplifying the
+integrands. See Integration Strategy below for a more comperehensive
+overview of how different techniques can be sequenced or work with each
+other.
+
+\section{Inverse Substitution}\label{inverse-substitution}
+
+This distinction was made by
+\href{https://www.maa.org/sites/default/files/pdf/cms_upload/0002989009124.di991793.99p00304.pdf}{David
+Cole} and I find it very helpful.
+
+We have
+
+\[h(x) = f(g(x))g'(x)\]
+
+In \textbf{Direct Substitution} we know an antiderivative of \(f(x)\)
+and want to find want to find one for \(h(x)\).
+
+\textbf{Direct Substitution Theorem}:
+
+If \(F' = f\), then \[\int h(x) = F(g(x))\]
+
+In \textbf{Inverse Substitution} we (think we) know an antiderivative
+for \(h(x)\) and want to find one for \(f(x)\).
+
+\textbf{Inverse Substitution Theorem}
+
+If \(H' = h\) and \(g\) has an inverse then
+\[\int f(x) = H(g^{-1}(x)) \]
+
+Both can be proven from the chain rule, with careful attention paid to
+the necessity of a bijection with the inverse. {[}I am currently making
+sense of this{]}
+
+Inverse substitution (and understanding bijection in terms of bounds),
+is essential for - trig substitution - high degree root substitution -
+dealing with some quadratics with inverse subs
+
+\subsection{Trig Substitution}\label{trig-substitution}
+
+Trig Substitution using the Inverse Substitution Theorem described
+previously. In terms of that theorem, though it seems like you're
+substituting a given function when you set \(x = g(x)\) but you're
+actually subbing \(g^{-1}\). And that's where the Limit Assumptions
+(which constrain definite integral bijections) comes from.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2458}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.4746}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1186}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1610}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Form
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Looks Like
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Substitution
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Limit Assumptions
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(\sqrt{b^2x^2 - a^2}\) & \(\sec^2\theta - 1 = \tan^{2} \theta\) &
+\(x = \frac{a}{b}\sec \theta\) &
+\(0 \le \theta  < \frac{\pi }{2},\,\,\frac{\pi }{2} < \theta \le \pi\) \\
+\(\sqrt {{a^2} - {b^2}{x^2}}\) &
+\(1 - {\sin ^2}\theta  = {\cos ^2}\theta \) &
+\(x = \frac{a}{b}\sin \theta\) &
+\( - \frac{\pi }{2} \le \theta  \le \frac{\pi }{2}\) \\
+\( \sqrt {{a^2} + {b^2}{x^2}} \) &
+\( {\tan ^2}\theta  + 1 = {\sec ^2}\theta \) &
+\( x = \frac{a}{b}\tan \theta \) &
+\( - \frac{\pi }{2} < \theta  < \frac{\pi }{2} \) \\
+\end{longtable}
+}
+
+Notice that the forms resemble the corresponding trig identity. Should
+help you remember/recognize them both.
+
+In the course of ``de-substituting'' \(\theta\) you'll need to leverage
+your knowledge of trig definitions, most simply by drawing a triangle.
+
+The above forms assume roots, though sometimes a trig sub can be useful
+\href{https://en.wikipedia.org/wiki/Trigonometric_substitution\#Case_II:_Integrands_containing_a2_+_x2}{without
+a root}. Typically though you'll have a root, and in those cases you're
+often gonna end up with something like \(\sqrt{\tan^2{x}}\). Be very
+careful with this, noting that it's \(|\tan(\theta)|\). The sign of tan
+or whatever else you're looking at will depend on the interval (for a
+defininte integral). But for an indefinite integral you can just define
+your bijection as occuring over a narrower continuous interval.. it
+still works. But doing all this requires understanding of trig function
+domains/ranges.
+
+When doing a trig sub, rather than dive right into doing the whole
+thing, make sure the substitution actually eliminates the root and/or
+binomial you want to get rid of in advance. Saves time.
+
+\subsection{On integrals involving
+roots}\label{on-integrals-involving-roots}
+
+Some integrals involving roots benefit from looking for a
+\(u = \sqrt[n]{g(x)}\) sub. This method won't always work to eliminate
+roots
+
+\subsection{On integrals involving
+quadratics}\label{on-integrals-involving-quadratics}
+
+Sometimes you can complete the square (if it's not already done for you)
+to allow getting a trig sub form.
+
+    \section{Integration by Parts}\label{integration-by-parts}
+
+Whereas u-substitution is a reversal of the chain rule, integration by
+parts leverages the product rule in reverse, with a little bit of
+re-arrangement.
+
+\[
+\int f(x)g'(x) \, dx = f(x)g(x) - \int f'(x)g(x) \, dx + 
+\]
+
+Or more compactly (and achieved via u-substitution of the above),
+
+\[
+\int u \, dv = uv - \int v \, du
+\]
+
+So compared to u-substitution, where we looked for \(u\) and \(du\),
+here we look for \(u\) and \(dv\), where v is some other function.
+
+When integrating by parts, you'll usually pick \(u\) to be something
+that gets simpler after differentiating, and \(dv\) as something that
+will stay around the same complexity when integrating. In the case of
+some integrals, like \(\int e^x \cos{x}\) this won't be the case and
+you'll actually subtract one integral from another in the process of
+solving it.
+
+Sometimes you'll apply integration by parts multiple times in a row to
+gradually integrate. In the case of something like \$ \int x\^{}4
+e\^{}\{x/2\} \$ there are tricks for skipping ahead to the end of
+multiple applications of Parts, described in
+\href{https://tutorial.math.lamar.edu/Classes/CalcII/IntegrationByParts.aspx}{Example
+9 here}.
+
+    \section{Improper Integrals}\label{improper-integrals}
+
+An Improper Integral is \textbf{convergent} if the associated limited
+exists and is a finite number, and \textbf{divergent} if the associated
+limit either doesn't or exist or is \(\pm \infty\).
+
+If \(\int_a^t f(x)~dx\) exists for every \(t > a\) then:
+
+\[\int_a^\infty f(x)~dx = \lim_{t\to \infty}\int_a^t f(x)~dx\]
+
+provided the limit exsts and is finite.
+
+If \(\int_t^b f(x)~dx\) exists for every \(t < b\) then:
+
+\[\int_{-\infty}^{b} f(x)~dx = \lim_{t\to -\infty}\int_t^b f(x)~dx\]
+
+If \(\int_{-\infty}^c f(x)~dx\) and \(\int_{c}^\infty f(x)~dx\) are both
+convergent then,
+
+\[\int_{-\infty}^{\infty} f(x)~dx = \int_{-\infty}^{c} f(x)~dx + \int_{c}^{\infty} f(x)~dx\]
+
+where \(c\) is any number. Note that this requires both integrals to be
+convergent in order for this integral to be convergent. Explanation why
+\href{https://math.stackexchange.com/questions/4366143/for-int-infty-inftyfx-int-inftynfx-int-n-inftyfx}{here}.
+
+If \(a > 0\) then
+
+\[\int_a^\infty \frac{1}{x^p}~dx\]
+
+is convergent if \(p > 1\) and divergent if \(p \leq 1\).
+
+\subsection{Discontinuous Integrand}\label{discontinuous-integrand}
+
+We also use this limit approach for integrals that are improper via a
+discontinuous integrand. For example:
+
+\[ \int_0^1 \frac{1}{\sqrt{x}} = \lim_{a \to 0^+} \int_a^1 \frac{1}{\sqrt{x}}\, dx\]
+
+If \(f(x)\) is continuous on the interval \([a,b)\) and not continuous
+at \(x=b\) then,
+
+\[\int_a^b f(x)~dx =\lim_{t \to b^-} \int_a^t f(x)~dx\]
+
+provided the limit exists and is finite. Note as well that we do need to
+use a left-hand limit here since the interval of integration is entirely
+on the left side of the upper limit.
+
+If \(f(x)\) is continuous on the interval \((a,b]\) and not continuous
+at \(x=a\) then,
+
+\[\int_{a}^{b} f(x)~dx = \lim_{t \to a^+} \int_t^b f(x)~dx\]
+
+provided the limit exists and is finite. In this case we need to use a
+right-hand limit here since the interval of integration is entirely on
+the right side of the lower limit.
+
+If \(f(x)\) is not continuous at \(x=c\) where \(a<c<b\) and
+\(\int_a^c f(x)~dx\) and \(\int_c^b f(x)~dx\) are both convergent then,
+
+\[\int_{a}^{b} f(x)~dx = \int_{a}^{c} f(x)~dx + \int_{c}^{b} f(x)~dx\]
+
+As with the infinite interval case this requires both of the integrals
+to be convergent in order for this integral to also be convergent. If
+either of the two integrals is divergent then so is this integral.
+
+If \(f(x)\) is not continuous at \(x=a\) and \(x=b\) and if
+\(\int_{a}^{c} f(x)~dx\) and \(\int_{c}^{b} f(x)~dx\) are both
+convergent then,
+
+\[\int_{a}^{b} f(x)~dx = \int_{a}^{c} f(x)~dx + \int_{c}^{b} f(x)~dx\]
+
+Where \(c\) is any number. Again, this requires BOTH of the integrals to
+be convergent in order for this integral to also be convergent.
+
+\subsection{Comparison Test for Improper
+Integrals}\label{comparison-test-for-improper-integrals}
+
+If \(f(x) \ge g(x) > 0\) on the interval \([a, \infty)\), then:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  If \(\int_a^\infty f(x)~dx\) converges, then so does
+  \(\int_a^\infty g(x)~dx\)
+\item
+  If \(\int_a^\infty g(x)~dx\) diverges, then so does
+  \(\int_a^\infty f(x)~dx\)
+\end{enumerate}
+
+    \section{Integration Strategy}\label{integration-strategy}
+
+\href{https://tutorial.math.lamar.edu/Classes/CalcII/IntegrationStrategy.aspx}{Good
+methodical approach detailed here}. As they note, many integrals will
+require multiple techniques in succession.
+
+For a given integral, narrow down which techniques \emph{might} work. If
+you have multiple possible techniques you could apply, go with the one
+you know the best. You will often have to combine methods.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Simplify the integral. Consider trig identities.
+\item
+  Look for a simple u-sub.
+\item
+  Identify the type of integrand, and consider the associated
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \tightlist
+  \item
+    Rational Expression \textasciitilde{} Partial Fractions
+  \item
+    Polynomial Times a \textbf{Trancendental}(trig/exponential/log)
+    \textasciitilde{} Integration by Parts
+  \item
+    Product of sin/cos, sec/tan, csc/cot? \textasciitilde{} Product of
+    Trig Functions techniques
+  \item
+    Trig sub pattern (under a root)? \textasciitilde{} Trig Sub
+  \item
+    Pesky roots? \textasciitilde{} Inverse sub of the root
+  \item
+    Pesky quadratic? \textasciitilde{} Complete the Square and revisit
+  \end{enumerate}
+\item
+  Can you relate it to an integral you already know? Explore steps that
+  make it into a form you've seen before. Sometimes this could be crafty
+  multiplication of rational functions.
+\item
+  See about applying multiple techniques. Use intuition combined with
+  the rules to succeed.
+\end{enumerate}
+
+\section{Area Between a Curve and the
+Y-Axis}\label{area-between-a-curve-and-the-y-axis}
+
+\href{https://youtu.be/6XqsLv0QDUE}{Khan vid} and
+\href{https://youtu.be/B5441_DREY0}{anotha}. You can integrate over the
+y-axis, by just updating your equation to be in terms of y, and updating
+the bounds. When picking y bounds, the lower bound is the lower y,
+similar to how lower x bound would be the lower number typically.
+
+\section{Volume with Cross Sections}\label{volume-with-cross-sections}
+
+\href{https://youtu.be/4vLy5VoUcQE}{Intro Vid} which visualizes it. Read
+these questions carefully to see how they create the square, and which
+variable we're integrating along (x, y, etc). Example with
+\href{https://youtu.be/aYT0Gm-v5T8}{y-axis} integral.
+
+\section{Solid of Revolution}\label{solid-of-revolution}
+
+\href{https://en.wikipedia.org/wiki/Disc_integration}{Wiki on Disc
+Integration}.
+
+\subsection{Disc Method / Rotation}\label{disc-method-rotation}
+
+\href{https://youtu.be/btGaOTXxXs8}{Vid on Disc Method around X-axis}.
+You can visualize the rotation of a given riemann rectangle as giving
+you a ``coin'' with the thickness being the axis of integration.
+
+\subsection{Washer Method}\label{washer-method}
+
+\textbf{Washer Method} is a variant of the Disc Method, using Rings
+instead of Discs.
+
+In the lead up to the Washer Method,
+\href{https://youtu.be/vhMl755vR5Q}{Khan has a vid} showing how you
+could subtract an outer from an inner solid of revolution.
+
+    \section{Arc Length}\label{arc-length}
+
+Arc length is the actual length of the line in a function.
+
+\subsection{Explanation with
+differentials}\label{explanation-with-differentials}
+
+\href{https://youtu.be/8Y-snjheI9M}{Khan Vid}.
+
+Conceptually we begin approaching the problem as getting all the small
+line segments that comprise the arc:
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={image.png}]{images/arc-length.png}}
+\caption{image.png}
+\end{figure}
+
+Using the pythagorean formula, we can formulate
+\(\int_a^b ds = \int_a^b \sqrt{(dx)^2 + (dy)^2}\). If we factor out
+\((dx)^2\), we can get to
+\(\int_a^b \sqrt{(dx)^2(1 + (\frac{dy}{dx})^2)}\) . Pulling the
+\((dx)^2\) out of the square root, we get to
+\(\int_a^b \sqrt{1 + (\frac{dy}{dx})^2}dx\)
+
+See Parametric Equations notebook for faster parametric formula.
+
+\subsection{Proper proof and extension to function of
+y}\label{proper-proof-and-extension-to-function-of-y}
+
+\href{https://tutorial.math.lamar.edu/classes/calcii/arclength.aspx}{Rigorous
+Treatment on Lamar}. The main difference is the proof makes use of the
+mean vlue theorem rather than differential magic.
+
+\[
+L=\int d s
+\] where, \[
+\begin{array}{ll}
+d s=\sqrt{1+\left(\frac{d y}{d x}\right)^{2}} d x & \text { if } y=f(x), a \leq x \leq b \\
+d s=\sqrt{1+\left(\frac{d x}{d y}\right)^{2}} d y & \text { if } x=h(y), c \leq y \leq d
+\end{array}
+\]
+
+\end{document}

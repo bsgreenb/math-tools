@@ -1,0 +1,107 @@
+\documentclass[11pt]{article}
+\usepackage{math-notes-preamble}
+
+\title{DiffEq}
+
+\begin{document}
+\maketitle
+
+\section{Slope fields}\label{slope-fields}
+
+\href{https://youtu.be/8Amgakx5aII}{Vid on Khan}
+
+\section{Euler's Method}\label{eulers-method}
+
+\href{https://youtu.be/q87L9R9v274}{Vid on Khan}
+
+\section{Separable Differential
+Equations}\label{separable-differential-equations}
+
+Take the form
+
+\[
+\frac{dy}{dx} = g(x)h(y)
+\]
+
+\href{https://youtu.be/DL-ozRGDlkY}{Vid on Khan}. Easiest type of one to
+solve without needing numerical approximation methods.
+
+These are differential equations where you can get y and dy on one side,
+and x and dx on the other side. Then you can integrate both sides.
+
+Note that this involves doing mathematically meaningless stuff with
+floating dys and dxs.
+\href{https://math.stackexchange.com/a/1252426/49487}{Explained here on
+MSE} why this works.
+
+{[}add formula from wiki{]}
+
+Note: Be extra careful to keep track of Constants of Integration. They
+can determine the answer.
+
+\section{Growth Models}\label{growth-models}
+
+\href{https://youtu.be/_JpS8k1a9yE}{Khan Vid} covers the way
+\(N = Ce^{rt}\) from \(\frac{dN}{dt} = rN\). Then Verhulst gave a
+rigorous version of Malthus which incorporated restraints which is
+
+\section{Logistic Differential
+Equation}\label{logistic-differential-equation}
+
+On AP Calc \href{https://youtu.be/NU1v-8VRirU}{Logistic Equations}, we
+start with the Logistic Differential Equation:
+
+\[\frac{dN}{dt} = rN(1-\frac{N}{k})\]
+
+And we want to get to \(N(t)\). This involves algebraically rearrange
+the differntial equation and taking advantage of partial fractions to
+get it more integrable on the left hand side, til we arrive at:
+
+\[
+\frac{N}{1-\frac{N}{k}} = Ce^{rt} 
+\]
+
+Now our best bet is to take the reciprocal {[}Is this the general
+Bernoulli Diff Eq approach?{]}
+
+\[
+\frac{1-\frac{N}{k}}{N} = Ce^{-rt} \\
+\frac{1}{N} = Ce^{-rt} +\frac{1}{k} \\
+N(t) = \frac{1}{Ce^{-rt} +\frac{1}{k}} \\
+\]
+
+Now we want to solve for \(C\) by looking at \(N(0)\)
+
+\[
+N_0 = \frac{1}{C +\frac{1}{k}} \\
+\frac{1}{N_0} = C + \frac{1}{k} \\
+C = \frac{1}{N_0} - \frac{1}{k} \\
+\]
+
+Plugging C back in:
+
+\[
+N(t) = \frac{1}{(\frac{1}{N_0} - \frac{1}{k})e^{-rt} +\frac{1}{k}} \\
+\]
+
+Let's clean up those fractions in the denominator by multiplying: \[
+N(t) = \left(\frac{1}{(\frac{1}{N_0} - \frac{1}{k})e^{-rt} +\frac{1}{k}}\right)\left(\frac{N_0k}{N_0k}\right) \\
+\]
+
+\[
+N(t) = \frac{N_0k}{(k - N_0)e^{-rt} + N_0} \\
+\]
+
+\subsection{Inflection Point of Logistic
+Curve}\label{inflection-point-of-logistic-curve}
+
+Just like any other function, find when \(f'' = 0\).
+
+\section{Bernoulli Differential
+Equation}\label{bernoulli-differential-equation}
+
+Logistic Differential Equation is an example of a
+\href{https://brilliant.org/wiki/bernoullis-equation/}{Bernoulli
+Differential Equation}.
+
+\end{document}
