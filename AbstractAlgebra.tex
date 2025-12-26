@@ -458,9 +458,7 @@ If \(a\) and \(b\) commute, then \(\operatorname{ord}(a b)\) is a
 divisor of \(\operatorname{lcm}(m, n)\).
 
 If \(m\) and \(n\) are relatively prime, then no power of \(a\) can be
-equal to any power of \(b\) (except for \(e\) ). (REMARK: Two integers
-are said to be relatively prime if they have no common factors except ±
-1.)
+equal to any power of \(b\) (except for \(e\) ).
 
 If \(m\) and \(n\) are relatively prime, then the products
 \(a^i b^j(0 \leq i<m, 0 \leq j<n)\) are all distinct.
@@ -477,5 +475,21 @@ Thus, there is no simple relationship between
 
 \subsection{Relationship between ord(a) and
 ord(a\^{}k)}\label{relationship-between-orda-and-ordak}
+Let $a$ be an element of order $n$ in a group $G$.
+
+If and only if $m$ and $n$ are relatively prime, $a^m$ has order $n$.
+
+The order of $a^m$ is $\frac{\text{lcm}(m,n)}{m}$ , which is more typically stated as:
+
+$$
+\text{ord}(a^m) = \frac{n}{\gcd(m, n)}
+$$
+
+\subsection{Relationship between $\text{ord}(a)$ and the order of any $k$th Root of $a$
+}
+Where $n$ is the order of element $a$, $k$ is the root index such that $b^k = a$, and $l$ is an integer relatively prime to $n$ that represents the specific reduction factor for that root.
+
+$$\text{ord}(b) = \frac{nk}{l}$$
+Note that $l$ can be 1 when every prime factor of the root index $k$ is also a factor of the original order $n$, resulting in the maximum possible order for the root $b$ ($nk$).
 
 \end{document}
