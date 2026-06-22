@@ -289,7 +289,7 @@ $$
 \text{ord}(a^m) = \frac{n}{\gcd(m, n)}
 $$
 
-### Relationship between $\text{ord}(a)$ and the order of any $k$th Root of $a$
+### Relationship between $\text{ord}(a)$ and the order of any k-th Root of $a$
 
 Where $n$ is the order of element $a$, $k$ is the root index such that $b^k = a$, and $l$ is an integer relatively prime to $n$ that represents the specific reduction factor for that root.
 
