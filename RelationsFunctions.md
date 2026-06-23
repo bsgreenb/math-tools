@@ -113,6 +113,28 @@ $ \forall y \in Y[\exists x \in X[f(x) = y]] $
 
 **Bijective** - injective and surjective (see above).  $|X| = |Y|$ for these. f has an **inverse**
 
+### Pigeonhole Principle
+
+**Statement.** For a function $f: X \to Y$ between finite sets:
+
+- If $|X| > |Y|$, then $f$ cannot be **injective** (two inputs must share an output).
+- *Dual*: if $|X| < |Y|$, then $f$ cannot be **surjective** (some output goes unhit).
+
+**Proof.** If $f$ were injective, its $|X|$ inputs would give $|X|$ distinct outputs, all sitting inside $Y$, forcing $|X| \leq |Y|$ -- contradicting $|X| > |Y|$.  Dually, the outputs $f(X)$ are at most $|X|$ distinct values, so if $|X| < |Y|$ they cannot cover all of $Y$.
+
+#### Shortcut to a Bijection (equal-size case)
+
+When $X$ and $Y$ are **finite** with $|X| = |Y|$, the three properties collapse into one:
+
+$$ f \text{ injective} \iff f \text{ surjective} \iff f \text{ bijective} $$
+
+So with equal-size domain and codomain, proving **just one** of injectivity or surjectivity hands you the bijection for free.  Each direction follows by shrinking a set to trigger the strict inequality pigeonhole needs:
+
+- **Injective $\Rightarrow$ surjective**: if $f$ missed some $y_0$, it would map $X$ into $Y \setminus \{y_0\}$ with $|X| > |Y \setminus \{y_0\}|$, so $f$ couldn't be injective -- contradiction.
+- **Surjective $\Rightarrow$ injective**: if $f(x_1) = f(x_2)$ with $x_1 \neq x_2$, dropping $x_2$ still covers all of $Y$ from $X \setminus \{x_2\}$ with $|X \setminus \{x_2\}| < |Y|$, so $f$ couldn't be surjective -- contradiction.
+
+Finiteness is essential -- it fails for infinite sets (e.g. $f: \mathbb{N} \to \mathbb{N}$, $f(n) = n+1$ is injective but not surjective).
+
 ## Composite Functions
 $$
 \begin{align*}
