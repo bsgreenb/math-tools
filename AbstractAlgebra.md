@@ -361,3 +361,124 @@ Let $G$ and $H$ be groups, with $a \in G$ and $b \in H$.
 - $\langle a\rangle \times \langle b\rangle$ is cyclic iff $\operatorname{ord}(a)$ and $\operatorname{ord}(b)$ are relatively prime. (When $m, n$ are coprime, $(a, b)$ achieves the maximum possible order $mn = |\langle a\rangle \times \langle b\rangle|$; otherwise the order is strictly less than $mn$.)
 
 ### $k$th roots of Elements in a Cyclic Group
+
+
+
+### test
+$$
+\[
+\text{Let } \langle a\rangle \text{ be cyclic of order } mn,
+\text{ where } \gcd(m,n)=1.
+\]
+We prove that
+\[
+\langle a\rangle \cong \langle a^m\rangle \times \langle a^n\rangle.
+\]
+
+Define
+\[
+f:\langle a\rangle \to \langle a^m\rangle \times \langle a^n\rangle
+\]
+by
+\[
+f(a^x)=\bigl((a^x)^m,(a^x)^n\bigr)
+      =\bigl((a^m)^x,(a^n)^x\bigr),
+\qquad x\in\mathbb Z.
+\]
+
+First, \(f\) is well-defined. Suppose that \(a^c=a^d\). Then
+\[
+f(a^c)
+=
+\bigl((a^c)^m,(a^c)^n\bigr)
+=
+\bigl((a^d)^m,(a^d)^n\bigr)
+=
+f(a^d).
+\]
+
+Since \(|a|=mn\),
+\[
+|\langle a^m\rangle|
+=
+|a^m|
+=
+\frac{mn}{\gcd(mn,m)}
+=
+\frac{mn}{m}
+=
+n.
+\]
+Similarly,
+\[
+|\langle a^n\rangle|=m.
+\]
+Therefore,
+\[
+|\langle a^m\rangle \times \langle a^n\rangle|
+=
+|\langle a^m\rangle|\,|\langle a^n\rangle|
+=
+nm
+=
+|\langle a\rangle|.
+\]
+
+We now show that \(f\) is injective. Suppose
+\[
+f(a^c)=f(a^d).
+\]
+Then
+\[
+\bigl((a^c)^m,(a^c)^n\bigr)
+=
+\bigl((a^d)^m,(a^d)^n\bigr).
+\]
+Comparing first coordinates gives
+\[
+(a^m)^c=(a^m)^d,
+\]
+so
+\[
+(a^m)^{c-d}=e.
+\]
+Since \(|a^m|=n\), it follows that
+\[
+n\mid(c-d).
+\]
+Likewise, comparing second coordinates gives
+\[
+m\mid(c-d).
+\]
+Since \(\gcd(m,n)=1\), we have
+\[
+mn\mid(c-d).
+\]
+Because \(|a|=mn\), this implies
+\[
+a^{c-d}=e.
+\]
+Hence
+\[
+a^c=a^d.
+\]
+Thus \(f\) is injective.
+
+Since \(f\) is an injective map between finite sets of equal cardinality,
+\(f\) is bijective.
+
+Finally, for all \(c,d\in\mathbb Z\),
+\[
+\begin{aligned}
+f(a^c a^d)
+&= f(a^{c+d}) \\
+&= \bigl((a^m)^{c+d},(a^n)^{c+d}\bigr) \\
+&= \bigl((a^m)^c,(a^n)^c\bigr)
+   \bigl((a^m)^d,(a^n)^d\bigr) \\
+&= f(a^c)f(a^d).
+\end{aligned}
+\]
+Therefore \(f\) is a bijective homomorphism, so
+\[
+\langle a\rangle \cong \langle a^m\rangle \times \langle a^n\rangle.
+\]
