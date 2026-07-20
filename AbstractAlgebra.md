@@ -361,3 +361,12 @@ Let $G$ and $H$ be groups, with $a \in G$ and $b \in H$.
 - $\langle a\rangle \times \langle b\rangle$ is cyclic iff $\operatorname{ord}(a)$ and $\operatorname{ord}(b)$ are relatively prime. (When $m, n$ are coprime, $(a, b)$ achieves the maximum possible order $mn = |\langle a\rangle \times \langle b\rangle|$; otherwise the order is strictly less than $mn$.)
 
 ### $k$th roots of Elements in a Cyclic Group
+
+Let $\langle a\rangle$ be a cyclic group of order $n$. A **$k$th root** of $x$ is an element $b$ with $b^k = x$. The results below rely on a number theory fact (see Bézout's Identity in Numbers): $m$ is a multiple of $\gcd(k, n)$ iff $m$ is a linear combination of $k$ and $n$.
+
+$a^m$ has a $k$th root in $\langle a\rangle$ iff $\gcd(k, n)$ is a factor of $m$.
+
+- In particular, $a$ has a $k$th root iff $k$ and $n$ are relatively prime.
+- Let $p$ be prime. If $p \nmid n$, every element has a $p$th root. If $p \mid n$, then $a^m$ has a $p$th root iff $p \mid m$, so the only elements with $p$th roots are $e, a^p, a^{2p}, \ldots$
+
+The set of elements having a $k$th root is a subgroup, cyclic, equal to $\langle a^m\rangle$ with $m = \gcd(k, n)$.

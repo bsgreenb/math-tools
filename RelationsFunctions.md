@@ -22,7 +22,7 @@ Operators can be expressed in terms of these types of relations.  For example $\
 
 **Equivalence relation** means it's Reflexive, Symmetric, and Transitive.  Suppose $R$ is an equivalence relation on set $X$.  Then, we can represent the **equivalence classes** $\forall x \in X [x] = \{y|xRy\}$
 
-Basically, $[x]$ is set of all $y$ related to $x$.  We can express an equivalence relation as $[x] = [y] \lor [x] \cap [y] = \emptyset$.  Let's get more concrete for a sec:
+Basically, $[x]$ is set of all $y$ related to $x$.  We can express an equivalence relation as $[x] = [y] \lor [x] \cap [y] = \emptyset$.  Equivalently, $x \sim y$ iff $[x] = [y]$.  Let's get more concrete for a sec:
 
 $$
 \begin{align*}
@@ -31,6 +31,11 @@ $$
 & [1] = \{1\}, [2] = [3] = \{2, 3\} \quad\text{We get these equivalence classes}\\
 \end{align*}
 $$
+
+**Partitions and equivalence relations are twin aspects of the same structure** (see [Partition](Sets.md)):
+
+- Given an equivalence relation $\sim$ on $A$, the family of equivalence classes $\{[x] : x \in A\}$ is a **partition** of $A$ (the *partition determined by $\sim$*).
+- Conversely, given a partition of $A$, defining $x \sim y$ iff $x$ and $y$ lie in the same class yields an equivalence relation (the *equivalence relation determined by the partition*).
 
 Moving on, **Antisymmetry** is defined as: $ (aRb \land bRa) \rightarrow a = b$.  Example operators that fall under this definition: $\leq, \geq, \subset$.
 

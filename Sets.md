@@ -139,7 +139,11 @@ $$
 
 # Partition
 
-A **partition** of a set $A$ is a set of non-empty subsets of $A$, such that the union of all the subsets equals $A$, and the intersection of any two subsets is $\emptyset$.
+A **partition** of a set $A$ is a set of non-empty subsets of $A$ (called **classes**), such that the union of all the subsets equals $A$, and the intersection of any two subsets is $\emptyset$.
+
+Equivalently, the classes cover $A$ and any two distinct classes are disjoint — i.e. if two classes share an element, they must be equal.
+
+Partitions are the "twin" of equivalence relations: every partition determines an equivalence relation and vice versa. See [Relations/Functions](RelationsFunctions.md).
 
 
 # See Also
