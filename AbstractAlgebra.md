@@ -333,7 +333,7 @@ If $G = \langle a\rangle$ and $b \in G$, the order of $b$ is a factor of the ord
 
 ### Generators of Cyclic Groups
 
-For any positive integer $n$, let $\phi(n)$ denote the number of positive integers less than $n$ and relatively prime to $n$ (**Euler's totient function**). For example, $1, 2, 4, 5, 7, 8$ are relatively prime to $9$, so $\phi(9) = 6$.
+**Euler's totient function** $\phi(n)$ is defined, for any positive integer $n$, as the number of positive integers less than $n$ and relatively prime to $n$. For example, $1, 2, 4, 5, 7, 8$ are relatively prime to $9$, so $\phi(9) = 6$.
 
 Let $a$ have order $n$. Then:
 
