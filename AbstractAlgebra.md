@@ -576,12 +576,6 @@ In the remaining statements, let $G$ be a finite group. By the **normalizer** of
 - If $a \in N(H)$, then $aHa^{-1} = H$.
 - $N(H)$ is a subgroup of $G$.
 - $H \subseteq N(H)$. Furthermore, $H$ is a normal subgroup of $N(H)$.
-- For any $a, b \in G$, $aHa^{-1} = bHb^{-1}$ iff $b^{-1}a \in N(H)$.
-- There is a one-to-one correspondence between the set of conjugates of $H$ and the set of cosets of $N(H)$. (Thus, there are as many conjugates of $H$ as cosets of $N(H)$.)
-- $H$ has exactly $(G : N(H))$ conjugates. In particular, the number of distinct conjugates of $H$ is a divisor of $|G|$.
-- Let $K$ be any subgroup of $G$, let $K^* = \{N(H)a : a \in K\}$, and let
-
-$$X_K = \{aHa^{-1} : a \in K\}$$
 
 ## Quotient Groups
 
