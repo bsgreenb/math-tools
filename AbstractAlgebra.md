@@ -446,3 +446,181 @@ If $u \in A$, the **stabilizer** of $u$ is the set $G_u = \{g \in G : g(u) = u\}
 The number of elements in $O(u)$ is equal to the index of $G_u$ in $G$.
 
 The size of every orbit (with respect to $G$) is a factor of the order of $G$. In particular, if $f \in S_A$, the length of each cycle of $f$ is a factor of the order of $f$ in $S_A$.
+
+## Homomorphisms
+
+Now if $G$ and $H$ are any groups, it may happen that there is a function which transforms $G$ into $H$, although this function is *not* a one-to-one correspondence. For example, $\mathbb{Z}_6$ is transformed into $\mathbb{Z}_3$ by
+
+$$
+f = \begin{pmatrix} 0 & 1 & 2 & 3 & 4 & 5 \\ 0 & 1 & 2 & 0 & 1 & 2 \end{pmatrix}
+$$
+
+If $G$ and $H$ are any groups, and there is a function $f$ which transforms $G$ into $H$, we say that $H$ is a **homomorphic image** of $G$. The function $f$ is called a **homomorphism** from $G$ to $H$.
+
+**Definition**: If $G$ and $H$ are groups, a **homomorphism** from $G$ to $H$ is a function $f: G \rightarrow H$ such that for any two elements $a$ and $b$ in $G$,
+
+$$f(ab) = f(a)f(b)$$
+
+If there exists a homomorphism from $G$ *onto* $H$, we say that $H$ is a **homomorphic image** of $G$.
+
+In a homomorphic image of $G$, some aspect of $G$ is isolated and faithfully preserved while all else is deliberately lost.
+
+**Theorem 1**: Let $G$ and $H$ be groups, and $f: G \rightarrow H$ a homomorphism. Then
+
+(i) $f(e) = e$, and
+
+(ii) $f(a^{-1}) = [f(a)]^{-1}$ for every element $a \in G$.
+
+In the equation $f(e) = e$, the letter $e$ on the left refers to the neutral element in $G$, whereas the letter $e$ on the right refers to the neutral element in $H$.
+
+If $a$ is an element of a group $G$, a **conjugate** of $a$ is any element of the form $xax^{-1}$, where $x \in G$. In particular $a$ itself is a conjugate of $a$, which may be written in two ways, as $eae^{-1}$ or as $aaa^{-1}$. If $H$ is any subset of a group $G$, we say that $H$ is **closed with respect to conjugates** if every conjugate of every element of $H$ is in $H$.
+
+**Definition**: Let $H$ be a subgroup of a group $G$. $H$ is called a **normal subgroup** of $G$ if it is closed with respect to conjugates, that is, if
+
+for any $a \in H$ and $x \in G$, $xax^{-1} \in H$.
+
+**Definition**: Let $f: G \rightarrow H$ be a homomorphism. The **kernel** of $f$ is the set $K$ of all the elements of $G$ which are carried by $f$ onto the neutral element of $H$. That is,
+
+$$K = \{x \in G : f(x) = e\}$$
+
+**Theorem 2**: Let $f: G \rightarrow H$ be a homomorphism.
+
+(i) The kernel of $f$ is a normal subgroup of $G$, and
+
+(ii) The range of $f$ is a subgroup of $H$.
+
+If $f$ is a homomorphism, we represent the kernel of $f$ and the range of $f$ with the symbols $\operatorname{ker}(f)$ and $\operatorname{ran}(f)$.
+
+### Elementary Properties of Homomorphisms
+
+Let $G$, $H$, and $K$ be groups.
+
+- If $f: G \rightarrow H$ and $g: H \rightarrow K$ are homomorphisms, then their composite $g \circ f: G \rightarrow K$ is a homomorphism.
+- If $f: G \rightarrow H$ is a homomorphism with kernel $K$, then $f$ is injective iff $K = \{e\}$.
+- If $f: G \rightarrow H$ is a homomorphism and $K$ is any subgroup of $G$, then $f(K) = \{f(x) : x \in K\}$ is a subgroup of $H$.
+- If $f: G \rightarrow H$ is a homomorphism and $J$ is any subgroup of $H$, then
+
+$$f^{-1}(J) = \{x \in G : f(x) \in J\}$$
+
+is a subgroup of $G$. Furthermore, $\operatorname{ker} f \subseteq f^{-1}(J)$.
+- If $f: G \rightarrow H$ is a homomorphism with kernel $K$, and $J$ is a subgroup of $G$, let $f_J$ designate the restriction of $f$ to $J$. (In other words $f_J$ is the same function as $f$, except that its domain is restricted to $J$.) Then $\operatorname{ker} f_J = J \cap K$.
+- For any group $G$, the function $f: G \rightarrow G$ defined by $f(x) = e$ is a homomorphism.
+- For any group $G$, $\{e\}$ and $G$ are homomorphic images of $G$.
+- The function $f: G \rightarrow G$ defined by $f(x) = x^2$ is a homomorphism iff $G$ is abelian.
+- The functions $f_1(x, y) = x$ and $f_2(x, y) = y$, from $G \times H$ to $G$ and $H$, respectively, are homomorphisms.
+
+### Basic Properties of Normal Subgroups
+
+In the following, let $G$ denote an arbitrary group.
+
+- Find all the normal subgroups of $S_3$ and of $D_4$.
+- Every subgroup of an abelian group is normal.
+- The center of any group $G$ is a normal subgroup of $G$.
+- Let $H$ be a subgroup of $G$. $H$ is normal iff it has the following property: For all $a$ and $b$ in $G$, $ab \in H$ iff $ba \in H$.
+- Let $H$ be a subgroup of $G$. $H$ is normal iff $aH = Ha$ for every $a \in G$.
+- Any intersection of normal subgroups of $G$ is a normal subgroup of $G$.
+
+### Further Properties of Normal Subgroups
+
+Let $G$ denote a group, and $H$ a subgroup of $G$.
+
+- If $H$ has index 2 in $G$, then $H$ is normal.
+- Suppose an element $a \in G$ has order 2. Then $\langle a \rangle$ is a normal subgroup of $G$ iff $a$ is in the center of $G$.
+- If $a$ is any element of $G$, $\langle a \rangle$ is a normal subgroup of $G$ iff $a$ has the following property: For any $x \in G$, there is an integer $k$ such that $xa = a^k x$.
+- In a group $G$, a **commutator** is any product of the form $aba^{-1}b^{-1}$, where $a$ and $b$ are any elements of $G$. If a subgroup $H$ of $G$ contains all the commutators of $G$, then $H$ is normal.
+- If $H$ and $K$ are subgroups of $G$, and $K$ is normal, then $HK$ is a subgroup of $G$. ($HK$ denotes the set of all products $hk$ as $h$ ranges over $H$ and $k$ ranges over $K$.)
+- Let $S$ be the union of all the cosets $Ha$ such that $Ha = aH$. Then $S$ is a subgroup of $G$, and $H$ is a normal subgroup of $S$.
+
+### Homomorphism and the Order of Elements
+
+If $f: G \rightarrow H$ is a homomorphism:
+
+- For each element $a \in G$, the order of $f(a)$ is a divisor of the order of $a$.
+- The order of any element $b \neq e$ in the range of $f$ is a common divisor of $|G|$ and $|H|$.
+- If the range of $f$ has $n$ elements, then $x^n \in \operatorname{ker} f$ for every $x \in G$.
+- Let $m$ be an integer such that $m$ and $|H|$ are relatively prime. For any $x \in G$, if $x^m \in \operatorname{ker} f$, then $x \in \operatorname{ker} f$.
+- Let the range of $f$ have $m$ elements. If $a \in G$ has order $n$, where $m$ and $n$ are relatively prime, then $a$ is in the kernel of $f$.
+- Let $p$ be a prime. If $\operatorname{ran} f$ has an element of order $p$, then $G$ has an element of order $p$.
+
+### Properties Preserved under Homomorphism
+
+A property of groups is said to be **preserved under homomorphism** if, whenever a group $G$ has that property, every homomorphic image of $G$ does also. If $f: G \rightarrow H$ is a homomorphism of $G$ onto $H$:
+
+- If $G$ is abelian, then $H$ is abelian.
+- If $G$ is cyclic, then $H$ is cyclic.
+- If every element of $G$ has finite order, then every element of $H$ has finite order.
+- If every element of $G$ is its own inverse, every element of $H$ is its own inverse.
+- If every element of $G$ has a square root, then every element of $H$ has a square root.
+- If $G$ is finitely generated, then $H$ is finitely generated.
+
+### Inner Direct Products
+
+If $G$ is any group, let $H$ and $K$ be normal subgroups of $G$ such that $H \cap K = \{e\}$.
+
+- Let $h_1$ and $h_2$ be any two elements of $H$, and $k_1$ and $k_2$ any two elements of $K$. Then $h_1 k_1 = h_2 k_2$ implies $h_1 = h_2$ and $k_1 = k_2$.
+- For any $h \in H$ and $k \in K$, $hk = kh$.
+- Now, make the additional assumption that $G = HK$, that is, every $x$ in $G$ can be written as $x = hk$ for some $h \in H$ and $k \in K$. Then the function $\phi(h, k) = hk$ is an isomorphism from $H \times K$ onto $G$.
+
+If $H$ and $K$ are normal subgroups of $G$ such that $H \cap K = \{e\}$ and $G = HK$, then $G \cong H \times K$. $G$ is sometimes called the **inner direct product** of $H$ and $K$.
+
+### Conjugate Subgroups
+
+Let $H$ be a subgroup of $G$. For any $a \in G$, let $aHa^{-1} = \{axa^{-1} : x \in H\}$; $aHa^{-1}$ is called a **conjugate** of $H$.
+
+- For each $a \in G$, $aHa^{-1}$ is a subgroup of $G$.
+- For each $a \in G$, $H \cong aHa^{-1}$.
+- $H$ is a normal subgroup of $G$ iff $H = aHa^{-1}$ for every $a \in G$.
+
+In the remaining statements, let $G$ be a finite group. By the **normalizer** of $H$ we mean the set $N(H) = \{a \in G : axa^{-1} \in H \text{ for every } x \in H\}$.
+
+- If $a \in N(H)$, then $aHa^{-1} = H$.
+- $N(H)$ is a subgroup of $G$.
+- $H \subseteq N(H)$. Furthermore, $H$ is a normal subgroup of $N(H)$.
+- For any $a, b \in G$, $aHa^{-1} = bHb^{-1}$ iff $b^{-1}a \in N(H)$.
+- There is a one-to-one correspondence between the set of conjugates of $H$ and the set of cosets of $N(H)$. (Thus, there are as many conjugates of $H$ as cosets of $N(H)$.)
+- $H$ has exactly $(G : N(H))$ conjugates. In particular, the number of distinct conjugates of $H$ is a divisor of $|G|$.
+- Let $K$ be any subgroup of $G$, let $K^* = \{N(H)a : a \in K\}$, and let
+
+$$X_K = \{aHa^{-1} : a \in K\}$$
+
+## Quotient Groups
+
+**Theorem**: If $H$ is a normal subgroup of $G$, then $aH = Ha$ for all $a \in G$.
+
+In other words, there is no distinction between left and right cosets for a normal subgroup.
+
+Let $G$ be a group, and $H \le G$. Cosets can be combined through **coset multiplication**; the coset of $a$ multiplied by the coset of $b$ is defined to be the coset of $ab$. In symbols:
+
+$$Ha \cdot Hb = H(ab)$$
+
+Only when $H$ is a normal subgroup does coset multiplication give uniquely defined products and work as an operation.
+
+**Theorem**: Let $H$ be a normal subgroup of $G$. If $Ha = Hc$ and $Hb = Hd$, then $H(ab) = H(cd)$.
+
+Let $H$ be a normal subgroup of $G$. The set of all cosets of $H$ is conventionally denoted by the symbol $G/H$, e.g. $G/H = \{Ha, Hb, Hc, \ldots\}$ for all the cosets of $H$.
+
+We have shown that coset multiplication is a valid operation on this set. In fact,
+
+**Theorem**: $G/H$ with coset multiplication is a group.
+
+The group $G/H$ is called the **factor group**, or **quotient group**, of $G$ by $H$.
+
+Which leads us to an important theorem:
+
+**Theorem**: $G/H$ is a homomorphic image of $G$. $f(x) = Hx$ is the homomorphism we're looking for.
+
+$f$ is called the **natural homomorphism** from $G$ onto $G/H$.
+
+(As we'll soon see, this quotient group construction allows us to manufacture all the homomorphic images of $G$.)
+
+The quotient group construction of $\mathbb{Z}/\langle 6 \rangle$ is considered to be the rigorous way of constructing $\mathbb{Z}_6$. In general, $\mathbb{Z}_n = \mathbb{Z}/\langle n \rangle$. So for any $n$, $\mathbb{Z}_n$ is a homomorphic image of $\mathbb{Z}$.
+
+The motive for the quotient group construction is that it gives us a way of actually producing all the homomorphic images of any group $G$. However, what is even more fascinating about the quotient group construction is that, in practical instances, we can often choose $H$ so as to "factor out" unwanted properties of $G$, and preserve in $G/H$ only "desirable" traits. (By "desirable" we mean desirable within the context of some specific application or use.)
+
+First, we need the two coset properties in the following theorem:
+
+Let $G$ be a group, and $H$ a subgroup of $G$. Then
+
+(i) $Ha = Hb$ iff $ab^{-1} \in H$ and
+
+(ii) $Ha = H$ iff $a \in H$.
