@@ -618,3 +618,7 @@ Let $G$ be a group, and $H$ a subgroup of $G$. Then
 (i) $Ha = Hb$ iff $ab^{-1} \in H$ and
 
 (ii) $Ha = H$ iff $a \in H$.
+
+## Abrupt stop to notes..
+
+I realized that it's much better to just highlight the epub I have, and to write in the book.  This is a general observation about note taking.  Going forward, if I have custom notes I will write them to an md but it's not useful to mostly be transcribing my highlights as I've been doing above.

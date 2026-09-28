@@ -15,3 +15,6 @@ __pycache__/
 *.lot
 *.bbl
 *.blg
+
+*.pdf
+*.epub
